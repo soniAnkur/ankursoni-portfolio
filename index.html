@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankur Soni | Full-Stack Developer & AI Innovator</title>
+    <meta name="description" content="Full-stack developer with 10+ years experience building AI-powered applications, educational platforms, and innovative web solutions.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="tech-bg">
+        <div class="grid-overlay"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">ANKUR.SONI</span>
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#skills" class="nav-link">SKILLS</a>
+                <a href="#projects" class="nav-link">PROJECTS</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-profile">
+                <div class="profile-image-wrapper">
+                    <div class="profile-ring"></div>
+                    <div class="profile-ring-2"></div>
+                    <img src="./profile-cyberpunk.png" alt="Ankur Soni - Cyberpunk Profile" class="profile-image">
+                </div>
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>ACTIVE DEVELOPER</span>
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-subtitle">FULL-STACK DEVELOPER</div>
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="ANKUR SONI">ANKUR SONI</span>
+                </h1>
+                <div class="hero-tagline">
+                    <span class="typing-text">Building the future with AI & Code</span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    10+ years crafting innovative web & mobile applications • AI/ML Integration Specialist •
+                    Amazon Senior Engineer • 29+ Production Projects • Transforming ideas into reality
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Years Exp</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">29+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Live Apps</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">500+</div>
+                        <div class="stat-label">Connections</div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>VIEW PROJECTS</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>GET IN TOUCH</span>
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/ankursoni948/" target="_blank" class="social-link" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/soniAnkur" target="_blank" class="social-link" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:ankursoni948@gmail.com" class="social-link" title="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <div class="scroll-text">SCROLL</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">ABOUT ME</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="lead">
+                        I'm a seasoned full-stack developer with over a decade of experience building web and mobile applications.
+                        Currently working at <span class="highlight">Amazon</span> in Cupertino, California, I specialize in creating
+                        innovative AI-powered solutions, educational platforms, and business tools.
+                    </p>
+                    <p>
+                        My passion lies in leveraging cutting-edge technologies to solve real-world problems, with a particular
+                        focus on AI/ML integration, children's education, and e-commerce solutions. I've successfully deployed
+                        15+ production applications and built a portfolio of 29+ projects spanning multiple domains.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🚀</div>
+                            <div class="highlight-text">Build scalable web & mobile applications</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🤖</div>
+                            <div class="highlight-text">Integrate AI/ML technologies into production systems</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">👨‍👩‍👧‍👦</div>
+                            <div class="highlight-text">Create educational & family-oriented tech solutions</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">💼</div>
+                            <div class="highlight-text">Develop business automation & productivity tools</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-info">
+                    <div class="info-card">
+                        <h3>Experience</h3>
+                        <div class="info-item">
+                            <div class="info-company">Amazon</div>
+                            <div class="info-role">Senior Software Engineer</div>
+                            <div class="info-location">Cupertino, California</div>
+                            <div class="info-period">Current</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-summary">
+                                Previous roles across San Francisco Bay Area, San Jose, Boise (Idaho), and Gurgaon (India)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">TECHNICAL ARSENAL</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span class="category-icon">⚡</span>
+                        Languages & Frameworks
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span class="category-icon">🤖</span>
+                        AI & Machine Learning
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OpenAI</span>
+                        <span class="skill-tag">Perplexity</span>
+                        <span class="skill-tag">Grok AI</span>
+                        <span class="skill-tag">LLM Integration</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Sentiment Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span class="category-icon">☁️</span>
+                        Cloud & Tools
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">CI/CD</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span class="category-icon">🎯</span>
+                        Specializations
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI-Powered Apps</span>
+                        <span class="skill-tag">E-commerce</span>
+                        <span class="skill-tag">Educational Tech</span>
+                        <span class="skill-tag">Real-time Apps</span>
+                        <span class="skill-tag">Mobile-First</span>
+                        <span class="skill-tag">RESTful APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">FEATURED PROJECTS</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="education">EDUCATION</button>
+                <button class="filter-btn" data-filter="ecommerce">E-COMMERCE</button>
+                <button class="filter-btn" data-filter="business">BUSINESS</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: KidsVerse -->
+                <div class="project-card" data-category="ai education">
+                    <div class="project-badge">LIVE</div>
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-tech">Next.js • AI/ML • Node.js</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">KidsVerse / FamilyHearts</h3>
+                        <p class="project-description">
+                            AI-powered interactive storytelling platform creating personalized storybooks where children
+                            become the main characters. Features real-time story generation and adaptive learning.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">AI Story Generation</span>
+                            <span class="tag">Educational</span>
+                            <span class="tag">Child Profiles</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.familyhearts.fun" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                LIVE DEMO
+                            </a>
+                            <a href="https://github.com/soniAnkur/kids-storybooks-demo" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GITHUB
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Jide -->
+                <div class="project-card" data-category="ai business">
+                    <div class="project-badge">LIVE</div>
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-tech">Next.js • AI Chatbot • CRM</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Jide - AI Lead Generation</h3>
+                        <p class="project-description">
+                            Professional lead generation system for real estate brokers with AI-powered chatbot.
+                            Achieves 50% conversion rate and saves 12-20 hours/week for users.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Real Estate</span>
+                            <span class="tag">CRM</span>
+                            <span class="tag">$90K-$120K Value</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://jide-five.vercel.app" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                LIVE DEMO
+                            </a>
+                            <a href="https://github.com/soniAnkur/jide-proposal" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GITHUB
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Rhythm & Ocean -->
+                <div class="project-card" data-category="ecommerce ai">
+                    <div class="project-badge">LIVE</div>
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-tech">Next.js • E-commerce • AI Try-On</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Rhythm & Ocean</h3>
+                        <p class="project-description">
+                            Kids clothing e-commerce platform with innovative AI-powered virtual try-on feature.
+                            Complete shopping experience with age-based filtering and newsletter integration.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Kids Fashion</span>
+                            <span class="tag">AI Try-On</span>
+                            <span class="tag">E-commerce</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rhythmocean.vercel.app" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                LIVE DEMO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: ContentAI Pro -->
+                <div class="project-card" data-category="ai business">
+                    <div class="project-badge">LIVE</div>
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-tech">Next.js • OpenAI • SEO</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ContentAI Pro</h3>
+                        <p class="project-description">
+                            AI-powered content generation platform for businesses. Creates SEO-optimized blog posts,
+                            social media captions, and product descriptions with industry-tailored AI.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Content Gen</span>
+                            <span class="tag">SEO</span>
+                            <span class="tag">Marketing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://v0-ai-powered-content-generator-rho.vercel.app" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                LIVE DEMO
+                            </a>
+                            <a href="https://github.com/soniAnkur/v0-ai-powered-content-generator" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GITHUB
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: STOCK'er -->
+                <div class="project-card" data-category="ai business">
+                    <div class="project-badge">LIVE</div>
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-tech">Next.js • AI/ML • Real-time</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">STOCK'er - Sentiment Analysis</h3>
+                        <p class="project-description">
+                            Real-time stock market sentiment tracker powered by AI. Provides insights into market
+                            perception and emotional tone with interactive dashboard.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Finance</span>
+                            <span class="tag">AI Analysis</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://sentiment-app-ten.vercel.app" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                LIVE DEMO
+                            </a>
+                            <a href="https://github.com/soniAnkur/sentiment-app" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GITHUB
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: InsightCanvas -->
+                <div class="project-card" data-category="ai business">
+                    <div class="project-badge">LIVE</div>
+                    <div class="project-image">
+                        <div class="project-overlay"></div>
+                        <div class="project-tech">Next.js • Perplexity • Grok AI</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">InsightCanvas</h3>
+                        <p class="project-description">
+                            AI-powered research platform combining Perplexity search with Grok AI visualizations.
+                            Comprehensive research capabilities with interactive components.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Visualization</span>
+                            <span class="tag">Multi-AI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://gen-ui-insights.vercel.app" target="_blank" class="project-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                LIVE DEMO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Projects Link -->
+                <div class="project-card more-projects">
+                    <div class="more-content">
+                        <h3>+23 More Projects</h3>
+                        <p>Including CloneNet, Options Trading Dashboard, AI Chat Widget, SimplySocial, and many more innovative solutions.</p>
+                        <a href="https://github.com/soniAnkur" target="_blank" class="btn btn-primary">
+                            <span>VIEW ALL ON GITHUB</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">LET'S CONNECT</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h3>Let's collaborate on something amazing</h3>
+                    <p>
+                        Interested in discussing AI/ML integration challenges, educational technology initiatives,
+                        business automation solutions, and open source collaborations.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Location</div>
+                                <div class="contact-value">San Francisco Bay Area</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">
+                                    <a href="mailto:ankursoni948@gmail.com">ankursoni948@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-details">
+                                <div class="contact-label">LinkedIn</div>
+                                <div class="contact-value">
+                                    <a href="https://www.linkedin.com/in/ankursoni948/" target="_blank">linkedin.com/in/ankursoni948</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🐙</div>
+                            <div class="contact-details">
+                                <div class="contact-label">GitHub</div>
+                                <div class="contact-value">
+                                    <a href="https://github.com/soniAnkur" target="_blank">github.com/soniAnkur</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <div class="cta-card">
+                        <h4>What I Offer</h4>
+                        <ul class="opportunities-list">
+                            <li>Consulting projects for AI integration</li>
+                            <li>Collaborative ventures in EdTech</li>
+                            <li>Speaking engagements on AI/ML topics</li>
+                            <li>Mentoring aspiring developers</li>
+                        </ul>
+                        <a href="mailto:ankursoni948@gmail.com" class="btn btn-primary btn-large">
+                            <span>SEND MESSAGE</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-bracket">&lt;</span>
+                        <span class="logo-text">ANKUR.SONI</span>
+                        <span class="logo-bracket">/&gt;</span>
+                    </div>
+                    <p>Building the future, one line of code at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/ankursoni948/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/soniAnkur" target="_blank">GitHub</a>
+                        <a href="mailto:ankursoni948@gmail.com">Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ankur Soni. All rights reserved.</p>
+                <p class="footer-stats">
+                    <span>29+ Projects</span>
+                    <span>•</span>
+                    <span>15 Live Apps</span>
+                    <span>•</span>
+                    <span>10+ Years Experience</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
