@@ -4,26 +4,26 @@
    =========================== */
 
 :root {
-    /* Aurora Borealis Color Palette - Creative & Unique */
-    --neon-cyan: #00d4ff;           /* Electric Blue */
-    --neon-pink: #ff6b9d;           /* Coral Pink */
-    --neon-green: #00ffa3;          /* Mint Green */
-    --neon-blue: #5e17eb;           /* Deep Purple */
-    --neon-purple: #b24bf3;         /* Lavender Purple */
-    --neon-yellow: #ffd700;         /* Golden Yellow */
-    --neon-orange: #ff6b35;         /* Vibrant Orange */
-    --neon-teal: #00ffcc;           /* Aqua Teal */
+    /* Vibrant Modern Color Palette */
+    --neon-cyan: #00d9ff;           /* Bright Cyan */
+    --neon-pink: #ff3d8f;           /* Hot Pink */
+    --neon-green: #00ff88;          /* Electric Green */
+    --neon-blue: #6366f1;           /* Indigo */
+    --neon-purple: #a855f7;         /* Vibrant Purple */
+    --neon-yellow: #fbbf24;         /* Amber */
+    --neon-orange: #f97316;         /* Bright Orange */
+    --neon-teal: #14b8a6;           /* Teal */
 
-    /* Base Colors - Deep Space Theme */
-    --dark-bg: #0d0221;             /* Deep Space Purple */
-    --darker-bg: #080116;           /* Darker Purple */
-    --card-bg: rgba(30, 10, 50, 0.7);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(180, 75, 243, 0.2);
+    /* Base Colors - Modern Dark Theme */
+    --dark-bg: #0f172a;             /* Slate 900 */
+    --darker-bg: #020617;           /* Slate 950 */
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(168, 85, 247, 0.3);
 
     /* Text */
-    --text-primary: #ffffff;
-    --text-secondary: #c4b5fd;      /* Light Lavender */
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;      /* Slate 300 */
     --text-accent: var(--neon-teal);
 
     /* Spacing */
@@ -61,7 +61,7 @@ body {
     height: 100%;
     z-index: -1;
     background:
-        linear-gradient(135deg, #0d0221 0%, #1a0b3f 25%, #2d1b69 50%, #1a0b3f 75%, #0d0221 100%);
+        linear-gradient(135deg, #0f172a 0%, #1e1b4b 25%, #312e81 50%, #1e1b4b 75%, #0f172a 100%);
     overflow: hidden;
 }
 
@@ -72,8 +72,8 @@ body {
     width: 100%;
     height: 100%;
     background-image:
-        linear-gradient(rgba(0, 255, 204, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(180, 75, 243, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: gridMove 20s linear infinite;
 }
