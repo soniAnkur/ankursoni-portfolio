@@ -3,6 +3,7 @@
    Modern Glassmorphism + Retro Digital
    =========================== */
 
+/* Vibrant Theme (Default) */
 :root {
     /* Vibrant Modern Color Palette */
     --neon-cyan: #00d9ff;           /* Bright Cyan */
@@ -29,6 +30,45 @@
     /* Spacing */
     --section-padding: 120px;
     --container-width: 1200px;
+}
+
+/* Apple Theme */
+[data-theme="apple"] {
+    /* Apple Color Palette - SF Pro inspired */
+    --neon-cyan: #007AFF;           /* iOS Blue */
+    --neon-pink: #FF2D55;           /* iOS Pink */
+    --neon-green: #34C759;          /* iOS Green */
+    --neon-blue: #5E5CE6;           /* iOS Purple */
+    --neon-purple: #AF52DE;         /* iOS Purple */
+    --neon-yellow: #FFCC00;         /* iOS Yellow */
+    --neon-orange: #FF9500;         /* iOS Orange */
+    --neon-teal: #5AC8FA;           /* iOS Teal */
+
+    /* Base Colors - Apple Dark Mode */
+    --dark-bg: #000000;             /* True Black */
+    --darker-bg: #1C1C1E;           /* Apple Gray 6 */
+    --card-bg: rgba(28, 28, 30, 0.9);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(142, 142, 147, 0.18);
+
+    /* Text */
+    --text-primary: #FFFFFF;
+    --text-secondary: #8E8E93;      /* Apple Gray 2 */
+    --text-accent: var(--neon-cyan);
+}
+
+[data-theme="apple"] body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+}
+
+[data-theme="apple"] .tech-bg {
+    background: linear-gradient(135deg, #000000 0%, #1C1C1E 50%, #000000 100%);
+}
+
+[data-theme="apple"] .grid-overlay {
+    background-image:
+        linear-gradient(rgba(0, 122, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90, 200, 250, 0.08) 1px, transparent 1px);
 }
 
 * {
@@ -168,6 +208,59 @@ body {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+/* Theme Toggle */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.theme-toggle {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background: var(--glass-border);
+    transform: scale(1.05);
+}
+
+.theme-icon {
+    position: absolute;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.vibrant-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.apple-icon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+[data-theme="apple"] .vibrant-icon {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+[data-theme="apple"] .apple-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 .nav-toggle {
@@ -1218,6 +1311,15 @@ section {
 
     .nav-links {
         display: none;
+    }
+
+    .nav-actions {
+        gap: 1rem;
+    }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
     }
 
     .nav-toggle {

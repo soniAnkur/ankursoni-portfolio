@@ -5,12 +5,51 @@
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     initParticles();
     initNavigation();
     initProjectFilters();
     initScrollAnimations();
     initTypingEffect();
 });
+
+// ===========================
+// THEME SWITCHER
+// ===========================
+function initTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Load saved theme or default to vibrant
+    const savedTheme = localStorage.getItem('theme') || 'vibrant';
+    if (savedTheme === 'apple') {
+        html.setAttribute('data-theme', 'apple');
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'apple' ? 'vibrant' : 'apple';
+
+        if (newTheme === 'apple') {
+            html.setAttribute('data-theme', 'apple');
+        } else {
+            html.removeAttribute('data-theme');
+        }
+
+        // Save preference
+        localStorage.setItem('theme', newTheme);
+
+        // Update particles with new theme colors
+        updateParticleColors(newTheme);
+    });
+}
+
+function updateParticleColors(theme) {
+    const particlesContainer = document.getElementById('particles');
+    particlesContainer.innerHTML = '';
+    initParticles();
+}
 
 // ===========================
 // PARTICLE ANIMATION
@@ -32,8 +71,14 @@ function createParticle(container) {
     const duration = Math.random() * 20 + 10;
     const delay = Math.random() * 5;
 
-    // Aurora Borealis color palette
-    const colors = ['#00ffcc', '#b24bf3', '#ff6b9d', '#00d4ff', '#00ffa3', '#ff6b35'];
+    // Get theme-specific colors
+    const html = document.documentElement;
+    const isAppleTheme = html.getAttribute('data-theme') === 'apple';
+
+    const colors = isAppleTheme
+        ? ['#007AFF', '#FF2D55', '#34C759', '#5AC8FA', '#AF52DE', '#FF9500'] // Apple colors
+        : ['#00d9ff', '#ff3d8f', '#00ff88', '#a855f7', '#14b8a6', '#f97316']; // Vibrant colors
+
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     particle.style.cssText = `
