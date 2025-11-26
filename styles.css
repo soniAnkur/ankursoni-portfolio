@@ -100,8 +100,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background:
-        linear-gradient(135deg, #0f172a 0%, #1e1b4b 25%, #312e81 50%, #1e1b4b 75%, #0f172a 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
     overflow: hidden;
 }
 
@@ -169,10 +168,7 @@ body {
 }
 
 .logo-text {
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .nav-links {
@@ -198,7 +194,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    background: var(--neon-cyan);
     transition: width 0.3s ease;
 }
 
@@ -332,9 +328,9 @@ body {
 .profile-ring-2 {
     width: 340px;
     height: 340px;
-    border-color: var(--neon-pink);
+    border-color: var(--neon-teal);
     animation: rotate 15s linear infinite reverse;
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
 }
 
 @keyframes rotate {
@@ -409,10 +405,7 @@ body {
 
 .glitch {
     position: relative;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     animation: glitchText 5s infinite;
 }
 
@@ -477,10 +470,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--neon-cyan);
 }
 
 .stat-label {
@@ -533,7 +523,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+    background: var(--neon-cyan);
     color: var(--dark-bg);
     box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
 }
@@ -641,10 +631,7 @@ section {
     font-family: 'Orbitron', sans-serif;
     font-size: 4rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--neon-cyan);
     opacity: 0.3;
 }
 
@@ -769,7 +756,7 @@ section {
 }
 
 .info-role {
-    color: var(--neon-pink);
+    color: var(--neon-teal);
     font-weight: 500;
     margin-bottom: 0.3rem;
 }
@@ -914,7 +901,7 @@ section {
     top: 20px;
     right: 20px;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, var(--neon-green), #00cc00);
+    background: var(--neon-green);
     border-radius: 20px;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
@@ -922,13 +909,13 @@ section {
     color: var(--dark-bg);
     letter-spacing: 1px;
     z-index: 10;
-    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
 }
 
 .project-image {
     width: 100%;
     height: 200px;
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+    background: rgba(0, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -939,7 +926,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+    background: rgba(0, 255, 255, 0.2);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -987,11 +974,11 @@ section {
 
 .tag {
     padding: 0.4rem 1rem;
-    background: rgba(255, 0, 255, 0.1);
-    border: 1px solid var(--neon-pink);
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid var(--neon-green);
     border-radius: 15px;
     font-size: 0.8rem;
-    color: var(--neon-pink);
+    color: var(--neon-green);
     letter-spacing: 1px;
 }
 
@@ -1028,7 +1015,7 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 400px;
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
+    background: rgba(0, 255, 255, 0.05);
 }
 
 .more-content {
@@ -1040,10 +1027,7 @@ section {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--neon-cyan);
 }
 
 .more-content p {
@@ -1150,7 +1134,7 @@ section {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    color: var(--neon-pink);
+    color: var(--neon-teal);
 }
 
 .opportunities-list {
