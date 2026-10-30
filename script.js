@@ -136,6 +136,14 @@ function initNavigation() {
         }
     });
 
+    // Mobile menu toggle
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    }
+
     // Smooth scroll
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -148,6 +156,12 @@ function initNavigation() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+            }
+
+            // Close mobile menu after navigating
+            if (navToggle) {
+                navToggle.classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('active');
             }
         });
     });

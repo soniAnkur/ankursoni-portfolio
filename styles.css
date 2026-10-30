@@ -273,6 +273,18 @@ body {
     transition: all 0.3s ease;
 }
 
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ===========================
    HERO SECTION
    =========================== */
@@ -369,10 +381,10 @@ body {
 .status-dot {
     width: 8px;
     height: 8px;
-    background: var(--neon-green);
+    background: var(--neon-teal);
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
-    box-shadow: 0 0 10px var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-teal);
 }
 
 @keyframes pulse {
@@ -901,7 +913,7 @@ section {
     top: 20px;
     right: 20px;
     padding: 0.5rem 1rem;
-    background: var(--neon-green);
+    background: var(--neon-teal);
     border-radius: 20px;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
@@ -909,7 +921,7 @@ section {
     color: var(--dark-bg);
     letter-spacing: 1px;
     z-index: 10;
-    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+    box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
 }
 
 .project-image {
@@ -974,11 +986,11 @@ section {
 
 .tag {
     padding: 0.4rem 1rem;
-    background: rgba(0, 255, 136, 0.1);
-    border: 1px solid var(--neon-green);
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid var(--neon-cyan);
     border-radius: 15px;
     font-size: 0.8rem;
-    color: var(--neon-green);
+    color: var(--neon-cyan);
     letter-spacing: 1px;
 }
 
@@ -1295,6 +1307,21 @@ section {
 
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0 2rem;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 
     .nav-actions {
