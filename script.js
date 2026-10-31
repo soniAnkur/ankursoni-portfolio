@@ -257,13 +257,16 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // Clear the inline transform (rather than setting translateY(0)) once revealed,
+                // so it doesn't out-specificity the card's CSS :hover lift animation afterwards.
+                entry.target.style.transform = '';
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     // Animate elements on scroll
-    const animateElements = document.querySelectorAll('.project-card, .skill-category, .info-card, .highlight-item');
+    const animateElements = document.querySelectorAll('.project-card, .skill-category, .info-card, .highlight-item, .update-card');
 
     animateElements.forEach(el => {
         el.style.opacity = '0';

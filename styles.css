@@ -1049,6 +1049,130 @@ section {
 }
 
 /* ===========================
+   LINKEDIN UPDATES SECTION
+   =========================== */
+
+.updates-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-top: -2.5rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+}
+
+.updates-subtitle a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--neon-cyan);
+}
+
+.updates-subtitle a:hover {
+    color: var(--neon-teal);
+    border-bottom-color: var(--neon-teal);
+}
+
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2rem;
+}
+
+.update-card {
+    position: relative;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.update-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--neon-green), var(--neon-cyan), transparent);
+}
+
+.update-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--neon-green);
+    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15);
+}
+
+.update-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.update-icon {
+    color: var(--neon-green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+.update-date {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.update-type {
+    margin-left: auto;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    color: var(--neon-purple);
+    border: 1px solid var(--neon-purple);
+    border-radius: 10px;
+    padding: 0.15rem 0.6rem;
+}
+
+.update-text {
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+.update-text strong {
+    color: var(--neon-cyan);
+}
+
+.update-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.update-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    color: var(--neon-green);
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.update-link:hover {
+    gap: 0.75rem;
+    color: var(--neon-cyan);
+}
+
+/* ===========================
    CONTACT SECTION
    =========================== */
 
@@ -1295,6 +1419,14 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .updates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .updates-subtitle {
+        margin-top: -1.5rem;
+    }
+
     .contact-content {
         grid-template-columns: 1fr;
     }
@@ -1353,12 +1485,22 @@ section {
         flex-direction: column;
     }
 
+    .section-header {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+
     .section-title {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 
     .section-number {
         font-size: 3rem;
+    }
+
+    .section-line {
+        flex-basis: 100%;
+        height: 1px;
     }
 
     .footer-content {
