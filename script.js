@@ -56,7 +56,7 @@ function updateParticleColors(theme) {
 // ===========================
 function initParticles() {
     const particlesContainer = document.getElementById('particles');
-    const particleCount = 50;
+    const particleCount = 22;
 
     for (let i = 0; i < particleCount; i++) {
         createParticle(particlesContainer);
@@ -333,50 +333,6 @@ document.querySelectorAll('.glitch').forEach(element => {
 
     element.addEventListener('mouseleave', () => {
         element.style.animation = 'glitchText 5s infinite';
-    });
-});
-
-// ===========================
-// CURSOR TRAIL EFFECT
-// ===========================
-let cursorTrail = [];
-const maxTrail = 20;
-
-document.addEventListener('mousemove', (e) => {
-    // Create cursor dot with Aurora colors
-    const colors = ['#00ffcc', '#b24bf3', '#ff6b9d', '#00d4ff'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    dot.style.cssText = `
-        position: fixed;
-        width: 5px;
-        height: 5px;
-        background: ${randomColor};
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        left: ${e.clientX}px;
-        top: ${e.clientY}px;
-        opacity: 0.8;
-        box-shadow: 0 0 10px ${randomColor};
-    `;
-
-    document.body.appendChild(dot);
-    cursorTrail.push(dot);
-
-    // Remove old dots
-    if (cursorTrail.length > maxTrail) {
-        const oldDot = cursorTrail.shift();
-        oldDot.remove();
-    }
-
-    // Fade out dots
-    cursorTrail.forEach((d, index) => {
-        const opacity = (index + 1) / cursorTrail.length;
-        d.style.opacity = opacity * 0.5;
-        d.style.transform = `scale(${opacity})`;
     });
 });
 
