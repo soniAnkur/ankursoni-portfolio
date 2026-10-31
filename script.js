@@ -11,7 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilters();
     initScrollAnimations();
     initTypingEffect();
+    initCopyrightYear();
 });
+
+// ===========================
+// COPYRIGHT YEAR
+// ===========================
+function initCopyrightYear() {
+    const yearEl = document.getElementById('copyrightYear');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+}
 
 // ===========================
 // THEME SWITCHER
