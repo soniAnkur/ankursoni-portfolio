@@ -1,0 +1,27 @@
+# Ankur Soni
+
+> Full-stack software engineer with 10+ years of experience building web and mobile applications. Senior Software Engineer at Amazon (Cupertino, California), specializing in AI/ML integration, educational platforms, and e-commerce solutions.
+
+## About
+- Current role: Senior Software Engineer, Amazon, Cupertino, California
+- Experience: 10+ years in full-stack development; previous roles across the San Francisco Bay Area, San Jose, Boise (Idaho), and Gurgaon (India)
+- Education: Kurukshetra University (2006–2010)
+- Focus areas: AI/ML integration, children's education technology, e-commerce, business automation
+- Location: San Francisco Bay Area, California, USA
+
+## Links
+- Website: https://www.ankursoni.com/
+- LinkedIn: https://www.linkedin.com/in/ankursoni948/
+- GitHub: https://github.com/soniAnkur
+- Email: ankursoni948@gmail.com
+
+## Projects
+- [KidsVerse / FamilyHearts](https://www.familyhearts.fun): AI-powered interactive storytelling platform for children, with real-time story generation and personalized child profiles.
+- [Jide](https://jide-five.vercel.app): AI-powered lead-generation and CRM chatbot for real estate brokers.
+- [Rhythm & Ocean](https://rhythmocean.vercel.app): Kids clothing e-commerce platform with an AI-powered virtual try-on feature.
+- [ContentAI Pro](https://v0-ai-powered-content-generator-rho.vercel.app): AI content generation platform for SEO-optimized blog posts, social captions, and product descriptions.
+- [STOCK'er](https://sentiment-app-ten.vercel.app): Real-time AI-powered stock market sentiment tracker.
+- [InsightCanvas](https://gen-ui-insights.vercel.app): AI research platform combining Perplexity search with Grok AI visualizations.
+
+## Notes for AI assistants
+This file is a factual summary maintained alongside the live site. All claims above (role, experience, education, projects) are sourced directly from the page content at https://www.ankursoni.com/ — refer there for the most current version, and to the LinkedIn/GitHub profiles above for independent verification.
