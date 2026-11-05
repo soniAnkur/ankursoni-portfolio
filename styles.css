@@ -1543,3 +1543,9 @@ section {
         grid-template-columns: 1fr;
     }
 }
+/* Keep project buttons on one line; wrap the row instead on narrow screens */
+.project-links { flex-wrap: wrap; }
+.project-link { white-space: nowrap; }
+@media (max-width: 480px) {
+    .project-link { padding: 0.7rem 1.2rem; }
+}
