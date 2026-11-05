@@ -1549,3 +1549,13 @@ section {
 @media (max-width: 480px) {
     .project-link { padding: 0.7rem 1.2rem; }
 }
+
+/* Build date label on project cards */
+.project-built {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--neon-cyan);
+    opacity: 0.75;
+    margin: -0.25rem 0 0.75rem;
+}
