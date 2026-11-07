@@ -65,7 +65,7 @@ function initNavigation() {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             nav.style.background = 'rgba(10, 10, 15, 0.95)';
-            nav.style.boxShadow = '0 10px 30px rgba(0, 255, 255, 0.2)';
+            nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.45)';
         } else {
             nav.style.background = 'rgba(10, 10, 15, 0.8)';
             nav.style.boxShadow = 'none';
@@ -314,15 +314,31 @@ document.querySelectorAll('.stat-value').forEach(stat => {
 // ===========================
 // PARALLAX EFFECT
 // ===========================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-profile');
+// The offset was unbounded, so past the fold the portrait kept travelling
+// down the page and landed on top of the About heading. Clamp it to the
+// hero's own height and stop once the hero is gone.
+(() => {
+    const profile = document.querySelector('.hero-profile');
+    const hero = document.querySelector('.hero');
+    if (!profile || !hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
+    let ticking = false;
+    const apply = () => {
+        const limit = hero.offsetHeight;
+        const scrolled = Math.min(window.pageYOffset, limit);
+        profile.style.transform = `translateY(${scrolled * 0.18}px)`;
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(apply);
+        }
+    }, { passive: true });
+    apply();
+})();
 
 // ===========================
 // PROJECT CARD TILT EFFECT
@@ -438,3 +454,23 @@ skipLink.addEventListener('blur', () => {
 document.body.insertBefore(skipLink, document.body.firstChild);
 
 console.log('%c✅ Portfolio initialized successfully!', 'color: #00ff00; font-size: 14px; font-weight: bold;');
+
+// ===========================
+// FEED: expand truncated posts
+// ===========================
+document.querySelectorAll('.feed-more').forEach((btn) => {
+    const item = btn.closest('.feed-item');
+    const text = item.querySelector('.feed-text');
+
+    // Nothing is clipped on short posts, so don't offer a control that does nothing.
+    if (text.scrollHeight <= text.clientHeight + 1) {
+        btn.remove();
+        return;
+    }
+
+    btn.addEventListener('click', () => {
+        const open = item.classList.toggle('is-open');
+        btn.textContent = open ? 'See less' : 'See more';
+        btn.setAttribute('aria-expanded', String(open));
+    });
+});

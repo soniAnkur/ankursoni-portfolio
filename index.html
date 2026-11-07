@@ -200,28 +200,39 @@
                     </p>
                 </div>
                 <div class="about-info">
-                    <h3 class="flagship-heading">Main projects</h3>
-                    <a class="flagship" href="https://paperclip-studio-drab.vercel.app" target="_blank" rel="noopener">
-                        <span class="flagship-shot" style="background-image:url('images/paperclip-studio.jpg')" role="img" aria-label="Screenshot of Paperclip Studio"></span>
-                        <span class="flagship-body">
-                            <span class="flagship-name">Paperclip Studio</span>
-                            <span class="flagship-note">Open-source agent studio with a live 3D dashboard.</span>
-                        </span>
-                    </a>
-                    <a class="flagship" href="https://ragaradio.vercel.app" target="_blank" rel="noopener">
-                        <span class="flagship-shot" style="background-image:url('images/raga-radio.jpg')" role="img" aria-label="Screenshot of Raga Radio"></span>
-                        <span class="flagship-body">
-                            <span class="flagship-name">Raga Radio</span>
-                            <span class="flagship-note">Carnatic radio that tags and filters ragas by mood.</span>
-                        </span>
-                    </a>
-                    <a class="flagship" href="https://voicestories.vercel.app" target="_blank" rel="noopener">
-                        <span class="flagship-shot" style="background-image:url('images/voicestories.jpg')" role="img" aria-label="Screenshot of Voice Stories"></span>
-                        <span class="flagship-body">
-                            <span class="flagship-name">Voice Stories</span>
-                            <span class="flagship-note">Storybooks narrated in a cloned version of your own voice.</span>
-                        </span>
-                    </a>
+                    <h3 class="rail-heading">Main projects</h3>
+                    <ul class="flagship-list">
+                    <li>
+                        <a class="flagship" href="https://paperclip-studio-drab.vercel.app" target="_blank" rel="noopener">
+                            <span class="flagship-shot" style="background-image:url('images/paperclip-studio.jpg')" role="img" aria-label="Screenshot of Paperclip Studio"></span>
+                            <span class="flagship-body">
+                                <span class="flagship-name">Paperclip Studio</span>
+                                <span class="flagship-note">Open-source agent studio with a live 3D dashboard.</span>
+                            </span>
+                            <iconify-icon class="flagship-go" icon="lucide:arrow-up-right" aria-hidden="true"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flagship" href="https://ragaradio.vercel.app" target="_blank" rel="noopener">
+                            <span class="flagship-shot" style="background-image:url('images/raga-radio.jpg')" role="img" aria-label="Screenshot of Raga Radio"></span>
+                            <span class="flagship-body">
+                                <span class="flagship-name">Raga Radio</span>
+                                <span class="flagship-note">Carnatic radio that tags and filters ragas by mood.</span>
+                            </span>
+                            <iconify-icon class="flagship-go" icon="lucide:arrow-up-right" aria-hidden="true"></iconify-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flagship" href="https://voicestories.vercel.app" target="_blank" rel="noopener">
+                            <span class="flagship-shot" style="background-image:url('images/voicestories.jpg')" role="img" aria-label="Screenshot of Voice Stories"></span>
+                            <span class="flagship-body">
+                                <span class="flagship-name">Voice Stories</span>
+                                <span class="flagship-note">Storybooks narrated in a cloned version of your own voice.</span>
+                            </span>
+                            <iconify-icon class="flagship-go" icon="lucide:arrow-up-right" aria-hidden="true"></iconify-icon>
+                        </a>
+                    </li>
+                    </ul>
                     <a class="flagship-all" href="#projects">See all 10 projects</a>
                 </div>
             </div>
@@ -533,154 +544,66 @@
             </div>
             <p class="updates-subtitle">
                 Signal pulled from <a href="https://www.linkedin.com/in/ankursoni948/" target="_blank">LinkedIn</a> —
-                full text lives on the original post, this is just the terminal view.
+                full text lives on the original post.
             </p>
-            <div class="updates-grid">
-                <article class="update-card">
-                    <div class="update-card-header">
-                        <span class="update-icon">[in]</span>
-                        <span class="update-date">2 days ago</span>
+            <ul class="feed">
+                <li class="feed-item">
+                    <iconify-icon class="feed-mark" icon="simple-icons:linkedin" aria-label="LinkedIn"></iconify-icon>
+                    <div class="feed-body">
+                        <p class="feed-meta">LinkedIn<span>·</span>2 days ago</p>
+                        <div class="feed-text">Running 10+ AI agents across 3 machines with zero unified visibility led me to build <strong>Orbit</strong> — one browser tab showing every live agent session, RAM usage, and a one-click kill switch across machines, persisted via tmux.</div>
+                        <button class="feed-more" type="button" aria-expanded="false">See more</button>
+                        <p class="feed-tags"><span>#AgenticAI</span> <span>#DeveloperTools</span> <span>#DevEx</span></p>
+                        <a class="feed-link" href="https://www.linkedin.com/posts/ankursoni948_agenticai-developertools-devex-ugcPost-7521007086324019200-m8Am/" target="_blank" rel="noopener">Open on LinkedIn</a>
                     </div>
-                    <p class="update-text">
-                        Running 10+ AI agents across 3 machines with zero unified visibility led me to build
-                        <strong>Orbit</strong> — one browser tab showing every live agent session, RAM usage,
-                        and a one-click kill switch across machines, persisted via tmux.
-                    </p>
-                    <div class="update-tags">
-                        <span class="tag">#AgenticAI</span>
-                        <span class="tag">#DeveloperTools</span>
-                        <span class="tag">#DevEx</span>
+                </li>
+                <li class="feed-item">
+                    <iconify-icon class="feed-mark" icon="simple-icons:linkedin" aria-label="LinkedIn"></iconify-icon>
+                    <div class="feed-body">
+                        <p class="feed-meta">LinkedIn<span>·</span>2 weeks ago</p>
+                        <div class="feed-text">Built <strong>Paperclip Studio</strong> — a read-only 3D dashboard that turns a company of AI agents into a calm, glanceable scene: one character per agent, plain-English status, live activity feed. Zero dependencies, works on a phone. MIT-licensed, shipping hourly.</div>
+                        <button class="feed-more" type="button" aria-expanded="false">See more</button>
+                        <p class="feed-tags"><span>#AIAgents</span> <span>#OpenSource</span> <span>#ThreeJS</span> <span>#BuildInPublic</span></p>
+                        <a class="feed-link" href="https://www.linkedin.com/posts/ankursoni948_aiagents-opensource-threejs-share-7515885524763729920-h797/" target="_blank" rel="noopener">Open on LinkedIn</a>
                     </div>
-                    <a href="https://www.linkedin.com/posts/ankursoni948_agenticai-developertools-devex-ugcPost-7521007086324019200-m8Am/" target="_blank" class="update-link">
-                        VIEW_ON_LINKEDIN
-                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </article>
-
-                <article class="update-card">
-                    <div class="update-card-header">
-                        <span class="update-icon">[in]</span>
-                        <span class="update-date">2 weeks ago</span>
+                </li>
+                <li class="feed-item">
+                    <iconify-icon class="feed-mark" icon="simple-icons:linkedin" aria-label="LinkedIn"></iconify-icon>
+                    <div class="feed-body">
+                        <p class="feed-meta">LinkedIn<span>·</span>1+ year ago<span>·</span>Reshare</p>
+                        <div class="feed-text">Reshared a look at real-world vertical integration — AI powering daily physical products while pushing sustainability goals forward.</div>
+                        <button class="feed-more" type="button" aria-expanded="false">See more</button>
+                        <p class="feed-tags"><span>#Tesla</span> <span>#AIInnovation</span> <span>#Sustainability</span></p>
+                        <a class="feed-link" href="https://www.linkedin.com/posts/ankursoni948_tesla-aiinnovation-sustainability-share-7379604785936842752-7SN2/" target="_blank" rel="noopener">Open on LinkedIn</a>
                     </div>
-                    <p class="update-text">
-                        Built <strong>Paperclip Studio</strong> — a read-only 3D dashboard that turns a company of
-                        AI agents into a calm, glanceable scene: one character per agent, plain-English status,
-                        live activity feed. Zero dependencies, works on a phone. MIT-licensed, shipping hourly.
-                    </p>
-                    <div class="update-tags">
-                        <span class="tag">#AIAgents</span>
-                        <span class="tag">#OpenSource</span>
-                        <span class="tag">#ThreeJS</span>
-                        <span class="tag">#BuildInPublic</span>
+                </li>
+                <li class="feed-item">
+                    <iconify-icon class="feed-mark" icon="simple-icons:linkedin" aria-label="LinkedIn"></iconify-icon>
+                    <div class="feed-body">
+                        <p class="feed-meta">LinkedIn<span>·</span>1+ year ago</p>
+                        <div class="feed-text">A fun side experiment with Nano Banana AI: tried generating a consistent-character image sequence, and bananas crashed the party in 30–40% of the frames — including one car that ended up looking suspiciously like a banana.</div>
+                        <button class="feed-more" type="button" aria-expanded="false">See more</button>
+                        <p class="feed-tags"><span>#NanoBanana</span> <span>#Google</span> <span>#AI</span></p>
+                        <a class="feed-link" href="https://www.linkedin.com/posts/ankursoni948_nanobanana-google-ai-ugcPost-7373078944302092288-0pFA/" target="_blank" rel="noopener">Open on LinkedIn</a>
                     </div>
-                    <a href="https://www.linkedin.com/posts/ankursoni948_aiagents-opensource-threejs-share-7515885524763729920-h797/" target="_blank" class="update-link">
-                        VIEW_ON_LINKEDIN
-                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </article>
-
-                <article class="update-card">
-                    <div class="update-card-header">
-                        <span class="update-icon">[in]</span>
-                        <span class="update-date">1+ year ago</span>
-                        <span class="update-type">Reshare</span>
-                    </div>
-                    <p class="update-text">
-                        Reshared a look at real-world vertical integration — AI powering daily physical products
-                        while pushing sustainability goals forward.
-                    </p>
-                    <div class="update-tags">
-                        <span class="tag">#Tesla</span>
-                        <span class="tag">#AIInnovation</span>
-                        <span class="tag">#Sustainability</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/ankursoni948_tesla-aiinnovation-sustainability-share-7379604785936842752-7SN2/" target="_blank" class="update-link">
-                        VIEW_ON_LINKEDIN
-                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </article>
-
-                <article class="update-card">
-                    <div class="update-card-header">
-                        <span class="update-icon">[in]</span>
-                        <span class="update-date">1+ year ago</span>
-                    </div>
-                    <p class="update-text">
-                        A fun side experiment with Nano Banana AI: tried generating a consistent-character
-                        image sequence, and bananas crashed the party in 30–40% of the frames — including
-                        one car that ended up looking suspiciously like a banana.
-                    </p>
-                    <div class="update-tags">
-                        <span class="tag">#NanoBanana</span>
-                        <span class="tag">#Google</span>
-                        <span class="tag">#AI</span>
-                    </div>
-                    <a href="https://www.linkedin.com/posts/ankursoni948_nanobanana-google-ai-ugcPost-7373078944302092288-0pFA/" target="_blank" class="update-link">
-                        VIEW_ON_LINKEDIN
-                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </article>
-            </div>
+                </li>
+            </ul>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="blog" class="projects">
+    <section id="blog" class="writing">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Writing</h2>
                 <div class="section-line"></div>
             </div>
-            <p class="updates-subtitle">
-                Write-ups in progress. Starting with two MCP-adjacent concepts — dedicated posts with a real
-                use case are coming once each is worked through properly.
+            <p class="writing-line">
+                Blog posts coming soon — currently working through
+                <span>Web MCP</span>, <span>MCP Apps and ui:// resources</span>,
+                <span>agent orchestration at scale</span> and
+                <span>prompt-injection containment in CI</span>.
             </p>
-
-            <div class="projects-grid">
-                <!-- Blog Post 1: MCP App -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-badge badge-soon">Coming soon</div>
-                    <div class="project-image">
-                        <div class="project-overlay"></div>
-                        <div class="project-tech">MCP Apps • ui:// Resources • Case Study</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">A Blog Post on an MCP App</h3>
-                        <p class="project-description">
-                            Placeholder. MCP Apps let a server register an interactive <code>ui://</code> resource
-                            that a host renders in a sandboxed iframe, talking back over postMessage JSON-RPC.
-                            Dedicated write-up with a real use case coming soon.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">#MCPApps</span>
-                            <span class="tag">#AgenticAI</span>
-                            <span class="tag">#ComingSoon</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blog Post 2: WebMCP -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-badge badge-soon">Coming soon</div>
-                    <div class="project-image">
-                        <div class="project-overlay"></div>
-                        <div class="project-tech">WebMCP • Browser Agents • Case Study</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">WebMCP</h3>
-                        <p class="project-description">
-                            Placeholder. WebMCP lets a web page register tools directly with a browser-resident
-                            agent, no server round-trip required. Dedicated write-up with a real use case coming
-                            soon.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">#WebMCP</span>
-                            <span class="tag">#BrowserAgents</span>
-                            <span class="tag">#ComingSoon</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -697,54 +620,28 @@
                         Always keen to discuss micro-frontends, web components, AI tooling,
                         or whatever interesting problem you're tackling. No sales pitches, just good tech banter.
                     </p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-details">
-                                <div class="contact-label">Location</div>
-                                <div class="contact-value">Cupertino, California (San Francisco Bay Area)</div>
-                            </div>
+                    <dl class="contact-list">
+                        <div class="contact-row">
+                            <dt>Location</dt>
+                            <dd>Cupertino, California (San Francisco Bay Area)</dd>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--neon-cyan)">
-                                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">Email</div>
-                                <div class="contact-value">
-                                    <a href="mailto:ankursoni948@gmail.com">ankursoni948@gmail.com</a>
+                        <div class="contact-row">
+                            <dt>Email</dt>
+                            <dd><a href="mailto:ankursoni948@gmail.com">ankursoni948@gmail.com</a></dd>
+                        </div>
+                        <div class="contact-row">
+                            <dt>LinkedIn</dt>
+                            <dd><a href="https://www.linkedin.com/in/ankursoni948/" target="_blank" rel="me">linkedin.com/in/ankursoni948</a></dd>
+                        </div>
+                        <div class="contact-row">
+                            <dt>GitHub</dt>
+                            <dd><a href="https://github.com/soniAnkur" target="_blank">github.com/soniAnkur</a></dd>
+                        </div>
+                    </dl>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--neon-cyan)">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-details">
-                                <div class="contact-label">LinkedIn</div>
-                                <div class="contact-value">
-                                    <a href="https://www.linkedin.com/in/ankursoni948/" target="_blank" rel="me">linkedin.com/in/ankursoni948</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">🐙</div>
-                            <div class="contact-details">
-                                <div class="contact-label">GitHub</div>
-                                <div class="contact-value">
-                                    <a href="https://github.com/soniAnkur" target="_blank">github.com/soniAnkur</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="contact-cta">
                     <div class="cta-card">
-                        <h4>Fancy a Chat?</h4>
+                        <h4>Fancy a chat?</h4>
                         <ul class="opportunities-list">
                             <li>Geeking out about MFEs and web components</li>
                             <li>Framework-agnostic solutions (because we're not married to React, are we?)</li>
@@ -811,6 +708,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2/dist/iconify-icon.min.js" defer></script>
     <script src="backdrop.js" defer></script>
 </body>
 </html>

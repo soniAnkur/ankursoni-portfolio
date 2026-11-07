@@ -1577,7 +1577,12 @@ section {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
-    padding-bottom: 1.25rem;
+    /* overflow-x:auto forces overflow-y to auto, so a card's hover lift and
+       its shadow get clipped at the top. Pad the scroll box and pull it back
+       with the matching negative margin so the motion has somewhere to go. */
+    padding-top: 20px;
+    margin-top: -20px;
+    padding-bottom: 44px;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
 }
@@ -1734,3 +1739,212 @@ section {
 
     .nav-logo { font-size: 0.95rem; }
 }
+
+/* =========================================================
+   De-boxed sections: rules and alignment instead of cards.
+   Cards gave every item identical weight, so nothing read as
+   more important, and the borders broke proximity grouping.
+   ========================================================= */
+
+.rail-heading {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--glass-border);
+    margin: 0;
+}
+
+/* --- About: flagship list --- */
+.flagship-list { list-style: none; margin: 0; padding: 0; }
+
+.flagship-list > li + li { border-top: 1px solid var(--glass-border); }
+
+.flagship {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1rem 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.flagship:hover { background: none; opacity: 0.72; }
+
+.flagship-shot {
+    width: 96px;
+    height: 62px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    flex: none;
+}
+
+.flagship-body { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.flagship-name { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+.flagship-note { font-size: 0.82rem; line-height: 1.45; color: var(--text-secondary); }
+
+.flagship-go { font-size: 1rem; color: var(--text-secondary); }
+
+.flagship-all {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.flagship-all:hover { text-decoration: underline; }
+
+/* --- Updates: a feed, not a card wall --- */
+.feed { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 760px; }
+
+.feed-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    column-gap: 1rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.feed-item:last-child { border-bottom: 1px solid var(--glass-border); }
+
+.feed-mark { font-size: 1.25rem; color: var(--text-secondary); margin-top: 0.1rem; }
+
+.feed-meta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.feed-meta span { opacity: 0.45; }
+
+.feed-text {
+    color: var(--text-primary);
+    line-height: 1.65;
+    /* Unprefixed line-clamp is still not Baseline, so use the prefixed
+       box form, which is what actually ships everywhere. */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.feed-item.is-open .feed-text { -webkit-line-clamp: unset; overflow: visible; }
+
+.feed-text strong { color: var(--text-primary); font-weight: 600; }
+
+.feed-more {
+    margin-top: 0.4rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.feed-more:hover { color: var(--text-primary); }
+
+.feed-tags {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.feed-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.feed-link:hover { text-decoration: underline; }
+
+/* --- Writing: one line is enough for a placeholder --- */
+.writing-line {
+    max-width: 680px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.writing-line span { color: var(--text-primary); }
+
+/* --- Contact: definition list --- */
+.contact-list { margin: 2rem 0 0; max-width: 560px; }
+
+.contact-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.contact-row:last-child { border-bottom: 1px solid var(--glass-border); }
+
+.contact-row dt { font-size: 0.85rem; color: var(--text-secondary); }
+.contact-row dd { margin: 0; font-size: 0.95rem; color: var(--text-primary); }
+.contact-row dd a { color: var(--accent); text-decoration: none; }
+.contact-row dd a:hover { text-decoration: underline; }
+
+@media (max-width: 820px) {
+    .flagship { grid-template-columns: 76px 1fr auto; column-gap: 0.85rem; }
+    .flagship-shot { width: 76px; height: 50px; }
+    .feed-item { grid-template-columns: 26px 1fr; column-gap: 0.75rem; padding: 1.4rem 0; }
+    .contact-row { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+
+/* The CTA panel was the last card in this section; the heading and the
+   divided list already carry the grouping. */
+.cta-card {
+    background: none;
+    border: none;
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.cta-card h4 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.opportunities-list { list-style: none; margin: 0; padding: 0; }
+
+.opportunities-list li {
+    position: relative;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.opportunities-list li::before,
+.opportunities-list li::marker { content: none; }
