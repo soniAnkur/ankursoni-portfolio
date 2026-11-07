@@ -165,7 +165,7 @@ body {
 }
 
 .nav-logo {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     display: flex;
@@ -188,7 +188,7 @@ body {
 }
 
 .nav-link {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-secondary);
@@ -356,8 +356,11 @@ body {
     height: 280px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    /* Source photo is dark and heavily green-tinted; lift it and pull the
+       green back toward neutral so it sits with the iris palette. */
+    filter: brightness(1.22) saturate(0.92) contrast(1.04) hue-rotate(-8deg);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
     position: relative;
     z-index: 10;
 }
@@ -371,7 +374,7 @@ body {
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
     border: 1px solid var(--glass-border);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.8px;
@@ -397,7 +400,7 @@ body {
 }
 
 .hero-subtitle {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1rem;
     font-weight: 500;
     color: var(--text-secondary);
@@ -405,7 +408,7 @@ body {
 }
 
 .hero-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 4.5rem;
     font-weight: 900;
     line-height: 1;
@@ -470,7 +473,7 @@ body {
 }
 
 .stat-value {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 2.25rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -496,7 +499,7 @@ body {
     gap: 0.75rem;
     padding: 1rem 2rem;
     border-radius: 10px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
@@ -537,18 +540,18 @@ body {
     box-shadow: 0 15px 40px rgba(3, 5, 11, 0.6);
 }
 
+/* Tier 2: an action, but not the primary one. Surface fill + hairline,
+   never an accent border — the accent border is what made these read as
+   the same thing as the non-clickable skill chips. */
 .btn-secondary {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
-    border: 2px solid var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(3, 5, 11, 0.2);
+    border: 1px solid var(--glass-border);
 }
 
 .btn-secondary:hover {
-    background: rgba(0, 255, 255, 0.1);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(3, 5, 11, 0.4);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
 }
 
 .hero-social {
@@ -604,7 +607,7 @@ body {
 }
 
 .scroll-text {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.8rem;
     letter-spacing: 1.2px;
 }
@@ -632,7 +635,7 @@ section {
 }
 
 .section-number {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 4rem;
     font-weight: 900;
     color: var(--neon-cyan);
@@ -640,7 +643,7 @@ section {
 }
 
 .section-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0.8px;
@@ -737,7 +740,7 @@ section {
 }
 
 .info-card h3 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.3rem;
     color: var(--neon-cyan);
     margin-bottom: 1.5rem;
@@ -797,14 +800,11 @@ section {
 }
 
 .skill-category:hover {
-    background: rgba(0, 255, 255, 0.05);
-    border-color: var(--neon-cyan);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(3, 5, 11, 0.3);
+    border-color: rgba(255, 255, 255, 0.16);
 }
 
 .skill-category-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 2rem;
     display: flex;
@@ -823,23 +823,16 @@ section {
     gap: 1rem;
 }
 
+/* Tier 3: a label, not a control. Nothing here is clickable, so it gets
+   no border, no pill and no hover state. */
 .skill-tag {
-    padding: 0.75rem 1.5rem;
-    background: rgba(0, 255, 255, 0.1);
-    border: 1px solid var(--neon-cyan);
-    border-radius: 25px;
-    font-size: 0.9rem;
+    padding: 0.4rem 0.7rem;
+    background: rgba(255, 255, 255, 0.045);
+    border-radius: 6px;
+    font-size: 0.85rem;
     font-weight: 500;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-}
-
-.skill-tag:hover {
-    background: var(--neon-cyan);
-    color: var(--dark-bg);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(3, 5, 11, 0.4);
+    color: var(--text-secondary);
+    letter-spacing: 0;
 }
 
 /* ===========================
@@ -861,7 +854,7 @@ section {
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     color: var(--text-secondary);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0;
@@ -905,7 +898,7 @@ section {
     padding: 0.5rem 1rem;
     background: var(--neon-teal);
     border-radius: 20px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--dark-bg);
@@ -963,7 +956,7 @@ section {
 }
 
 .project-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
@@ -1001,23 +994,21 @@ section {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: rgba(0, 255, 255, 0.1);
-    border: 1px solid var(--neon-cyan);
-    border-radius: 25px;
-    color: var(--neon-cyan);
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .project-link:hover {
-    background: var(--neon-cyan);
-    color: var(--dark-bg);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(3, 5, 11, 0.4);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
 }
 
 .more-projects {
@@ -1034,7 +1025,7 @@ section {
 }
 
 .more-content h3 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--neon-cyan);
@@ -1107,7 +1098,7 @@ section {
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1.1rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
 }
 
 .update-icon {
@@ -1156,7 +1147,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 0.75rem;
     letter-spacing: 1.5px;
     color: var(--neon-green);
@@ -1180,7 +1171,7 @@ section {
 }
 
 .contact-text h3 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--neon-cyan);
@@ -1264,7 +1255,7 @@ section {
 }
 
 .cta-card h4 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: var(--neon-teal);
@@ -1323,7 +1314,7 @@ section {
 }
 
 .footer-logo {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     display: flex;
@@ -1350,7 +1341,7 @@ section {
 }
 
 .footer-column h4 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     color: var(--neon-cyan);
     margin-bottom: 0.5rem;
     letter-spacing: 0.8px;
@@ -1539,4 +1530,207 @@ section {
     .hero-stats {
         grid-template-columns: 1fr;
     }
+}
+/* =========================================================
+   Display face, snap rail, flagship tiles, mobile
+   ========================================================= */
+
+/* Unbounded carries the futurism; everything else stays Manrope so the
+   page reads calm. Unbounded is wide, so display sizes come down a notch. */
+.nav-logo,
+.hero-title,
+.section-title,
+.stat-value,
+.project-title,
+.flagship-name {
+    font-family: 'Unbounded', sans-serif;
+    letter-spacing: -0.03em;
+}
+
+.nav-logo { font-size: 1.15rem; }
+.hero-title { font-size: clamp(2.2rem, 6vw, 4.2rem); line-height: 1.02; }
+.section-title { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+.project-title { font-size: 1.1rem; letter-spacing: -0.02em; }
+
+.project-built {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: -0.25rem 0 0.75rem;
+}
+
+/* Real screenshots now exist, so the well goes back to image height. */
+.project-image {
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+}
+
+.project-overlay {
+    background: linear-gradient(180deg, transparent 40%, rgba(8, 10, 15, 0.75) 100%);
+}
+
+/* --- horizontal snap rail (no library) --- */
+.projects-rail {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-bottom: 1.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.projects-rail > .project-card {
+    flex: 0 0 clamp(280px, 82vw, 380px);
+    scroll-snap-align: start;
+    margin: 0;
+}
+
+.projects-rail:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+    border-radius: 4px;
+}
+
+/* Chrome-only sugar: real prev/next affordance for free. Everywhere else
+   the rail is already fully usable by drag, wheel and arrow keys. */
+@supports (scroll-marker-group: after) {
+    .projects-rail { scroll-marker-group: after; }
+
+    .projects-rail::scroll-marker-group {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    .projects-rail > .project-card::scroll-marker {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.22);
+        border: none;
+    }
+
+    .projects-rail > .project-card::scroll-marker:target-current {
+        background: var(--accent);
+    }
+}
+
+/* --- About: flagship project tiles --- */
+.flagship-heading {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.flagship {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 0.7rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.flagship:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.flagship-shot {
+    flex: 0 0 84px;
+    height: 60px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+}
+
+.flagship-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.flagship-name { color: var(--text-primary); font-size: 0.95rem; font-weight: 600; }
+.flagship-note { color: var(--text-secondary); font-size: 0.8rem; line-height: 1.45; }
+
+.flagship-all {
+    display: inline-block;
+    margin-top: 0.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.flagship-all:hover { text-decoration: underline; }
+
+/* --- mobile --- */
+@media (max-width: 820px) {
+    .projects-rail {
+        gap: 1rem;
+        padding-inline: 1.25rem;
+        margin-inline: -1.25rem;
+        scroll-padding-left: 1.25rem;
+    }
+
+    .hero-stats { flex-wrap: wrap; row-gap: 1.25rem; }
+
+    .stat { flex: 1 0 40%; }
+
+    .stat:nth-child(3) { padding-left: 0; border-left: none; }
+
+    .hero-cta { flex-wrap: wrap; }
+
+    .btn { flex: 1 1 auto; justify-content: center; }
+
+    .flagship-shot { flex-basis: 72px; height: 54px; }
+}
+
+@media (max-width: 820px) {
+    /* Filters became three stacked rows on a phone. Same affordance as the
+       project rail: one swipeable strip. */
+    .project-filters {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        padding-inline: 1.25rem;
+        margin-inline: -1.25rem;
+        scrollbar-width: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-filters::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+        flex: 0 0 auto;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .project-title { font-size: 1rem; }
+
+    .project-tech {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.6rem;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .project-image { height: 160px; }
+
+    .section-header { margin-bottom: 1.5rem; }
+
+    .nav-logo { font-size: 0.95rem; }
 }
