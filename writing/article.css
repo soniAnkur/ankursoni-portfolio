@@ -1,0 +1,217 @@
+/* Long-form article styles. Inherits tokens, fonts and the WebGL backdrop
+   from the site stylesheet; this file only handles reading layout. */
+
+.article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 140px 1.5rem 120px;
+}
+
+.article-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+}
+
+.article-back:hover { color: var(--text-primary); }
+
+.article-kicker {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.article h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1.9rem, 4.6vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.25rem;
+}
+
+.article-standfirst {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.article-meta span { opacity: 0.45; }
+
+.article h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.45rem;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin: 3.5rem 0 1rem;
+}
+
+.article h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2.25rem 0 0.75rem;
+    color: var(--text-primary);
+}
+
+.article p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.article p strong { color: var(--text-primary); font-weight: 600; }
+
+.article a:not(.article-back):not(.article-next) {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(110, 139, 255, 0.35);
+}
+
+.article a:not(.article-back):not(.article-next):hover {
+    border-bottom-color: var(--accent);
+}
+
+.article ul, .article ol {
+    margin: 0 0 1.5rem 1.1rem;
+    color: var(--text-secondary);
+}
+
+.article li { margin-bottom: 0.6rem; line-height: 1.7; }
+.article li strong { color: var(--text-primary); }
+
+/* Inline code and blocks */
+.article code {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.88em;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.14em 0.4em;
+    border-radius: 4px;
+    color: var(--text-primary);
+}
+
+.article pre {
+    margin: 0 0 1.75rem;
+    padding: 1.15rem 1.25rem;
+    overflow-x: auto;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    line-height: 1.65;
+}
+
+.article pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    color: #d7dce7;
+}
+
+.code-label {
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* Minimal, hand-rolled token colours — no highlighter dependency. */
+.tok-k { color: #a9b6ff; }
+.tok-s { color: #9fd8b4; }
+.tok-c { color: #6c7489; font-style: italic; }
+.tok-f { color: #e2c08d; }
+.tok-n { color: #d7a0c8; }
+
+/* Figures and diagrams */
+.article figure { margin: 2rem 0 2.25rem; }
+
+.article figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.article figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* A pulled-out point, without becoming a card */
+.article .callout {
+    margin: 2rem 0;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--accent);
+    color: var(--text-primary);
+}
+
+.article .callout p { color: var(--text-primary); margin-bottom: 0.5rem; }
+.article .callout p:last-child { margin-bottom: 0; }
+
+/* Comparison rows, as rules rather than a table of boxes */
+.compare { margin: 2rem 0; border-top: 1px solid var(--glass-border); }
+
+.compare-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1.25rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.compare-row dt { font-size: 0.9rem; color: var(--text-primary); font-weight: 600; }
+.compare-row dd { margin: 0; font-size: 0.95rem; line-height: 1.65; color: var(--text-secondary); }
+
+.article-next {
+    display: block;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    text-decoration: none;
+}
+
+.article-next .next-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.article-next .next-title {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+}
+
+.article-next:hover .next-title { color: var(--accent); }
+
+@media (max-width: 820px) {
+    .article { padding: 110px 1.25rem 80px; }
+    .article h2 { font-size: 1.25rem; margin-top: 2.75rem; }
+    .compare-row { grid-template-columns: 1fr; gap: 0.3rem; }
+    .article pre { font-size: 0.78rem; padding: 1rem; }
+}

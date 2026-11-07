@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letting any assistant drive a tab you already have open | Ankur Soni</title>
+    <meta name="description" content="WebMCP lets a live page register tools on document.modelContext so an agent in the browser can drive it. A walkthrough using a mood-filtered raga radio — with the API corrections most write-ups get wrong.">
+    <link rel="canonical" href="https://www.ankursoni.com/writing/webmcp-raga-radio.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Letting any assistant drive a tab you already have open">
+    <meta property="og:description" content="WebMCP: a live page registers tools on document.modelContext, and an agent already in the browser calls them — reusing your session, your auth and your playing audio.">
+    <meta property="og:url" content="https://www.ankursoni.com/writing/webmcp-raga-radio.html">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="article.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="tech-bg"></div>
+
+    <article class="article">
+        <a class="article-back" href="/#blog">← Writing</a>
+
+        <p class="article-kicker">Web MCP</p>
+        <h1>Driving a tab you already have open</h1>
+        <p class="article-standfirst">
+            The radio is playing. You are signed in. You want to say "put on something peaceful" without
+            opening a chat window. WebMCP lets the page itself hand its controls to an agent — and it is
+            a far rawer proposition than MCP Apps.
+        </p>
+        <div class="article-meta">
+            <span class="dot">Ankur Soni</span><span>·</span>7 November 2026<span>·</span>8 min read
+        </div>
+
+        <h2>A different missing piece</h2>
+        <p>
+            In the <a href="mcp-apps-raga-radio.html">previous post</a> the problem was that a chat client had no
+            player, so the server shipped one. Here the problem is inverted. The player exists. It is open, it
+            has state, it has my session. The thing that cannot reach it is the agent.
+        </p>
+        <p>
+            Conventional automation answers this by pretending to be a user: drive the DOM, click the buttons,
+            hope the markup did not change. That works until a class name changes, and it never knows what any
+            control means. WebMCP proposes the opposite — the page declares what it can do, in the same
+            vocabulary MCP already uses, and the agent calls those declarations directly.
+        </p>
+
+        <div class="callout">
+            <p>
+                <strong>Status, plainly.</strong> WebMCP is a <strong>Draft Community Group Report</strong> from
+                the W3C Web Machine Learning CG, dated 2 November 2026. It is not a W3C Recommendation. Chrome
+                has shipped it behind an <strong>origin trial</strong> since Chrome 149, with a local flag at
+                <code>chrome://flags/#enable-webmcp-testing</code>. Build on it to learn; do not build a product
+                that depends on it.
+            </p>
+        </div>
+
+        <h2>It moved, and most write-ups are stale</h2>
+        <p>
+            If you read one thing before writing code: the API lives on <strong><code>document</code>, not
+            <code>navigator</code></strong>. The CG moved the getter because tools belong to a document rather
+            than the browser as a whole — a reasonable call, since two tabs of the same app should expose their
+            own state. Chrome 150 deprecated <code>navigator.modelContext</code> while the trial ships both.
+        </p>
+        <p>
+            There is also no <code>provideContext()</code>, despite it appearing in a good deal of
+            otherwise-sensible material. The current interface is three methods:
+        </p>
+
+        <p class="code-label">WebIDL — abridged</p>
+        <pre><code>partial interface Document {
+  [SecureContext, SameObject] readonly attribute ModelContext modelContext;
+};
+
+interface ModelContext : EventTarget {
+  Promise&lt;undefined&gt; registerTool(ModelContextTool tool, optional ModelContextRegisterToolOptions options = {});
+  Promise&lt;sequence&lt;RegisteredTool&gt;&gt; getTools(optional ModelContextGetToolOptions options = {});
+  Promise&lt;DOMString&gt; executeTool(RegisteredTool tool, optional object inputObject, optional ModelContextExecuteToolOptions options = {});
+
+  attribute EventHandler ontoolchange;
+  attribute EventHandler ontoolactivated;
+  attribute EventHandler ontoolcancel;
+};</code></pre>
+
+        <h2>The shape of it</h2>
+        <p>
+            There is no server and no iframe. The page, the tools and the state are one thing, inside one origin,
+            under the user's existing session.
+        </p>
+
+        <figure>
+            <svg viewBox="0 0 720 262" role="img" aria-label="Architecture diagram: an agent in the browser calls tools registered on document.modelContext, which mutate the page's own player state.">
+                <defs>
+                    <marker id="b1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+                        <path d="M0,1 L8,4.5 L0,8 Z" fill="#6e8bff"/>
+                    </marker>
+                    <marker id="b2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+                        <path d="M0,1 L8,4.5 L0,8 Z" fill="#8b94a6"/>
+                    </marker>
+                </defs>
+                <g font-family="Manrope, sans-serif" font-size="12.5">
+                    <rect x="8" y="30" width="704" height="214" rx="10" fill="none" stroke="#2a3040"/>
+                    <text x="24" y="52" fill="#8b94a6" font-size="11.5">The browser · one origin · the user's session</text>
+
+                    <rect x="28" y="70" width="182" height="152" rx="8" fill="#11151e" stroke="#394257"/>
+                    <text x="42" y="92" fill="#e7eaf0" font-size="13" font-weight="600">Agent</text>
+                    <text x="42" y="112" fill="#8b94a6" font-size="11">sidebar · extension</text>
+                    <text x="42" y="138" fill="#8b94a6" font-size="11">“put on something</text>
+                    <text x="42" y="154" fill="#8b94a6" font-size="11">peaceful”</text>
+                    <rect x="42" y="170" width="154" height="34" rx="5" fill="#161b26" stroke="#2a3040"/>
+                    <text x="54" y="191" fill="#e2c08d" font-size="11">set_mood({ mood })</text>
+
+                    <rect x="268" y="70" width="190" height="152" rx="8" fill="#11151e" stroke="#394257"/>
+                    <text x="282" y="92" fill="#e7eaf0" font-size="13" font-weight="600">document</text>
+                    <text x="282" y="110" fill="#9fd8b4" font-size="11">.modelContext</text>
+                    <rect x="282" y="124" width="162" height="28" rx="5" fill="#161b26" stroke="#2a3040"/>
+                    <text x="294" y="143" fill="#e2c08d" font-size="11">play_raga</text>
+                    <rect x="282" y="158" width="162" height="28" rx="5" fill="#161b26" stroke="#2a3040"/>
+                    <text x="294" y="177" fill="#e2c08d" font-size="11">set_mood</text>
+                    <text x="282" y="206" fill="#8b94a6" font-size="10.5">Permissions-Policy: tools</text>
+
+                    <rect x="516" y="70" width="176" height="152" rx="8" fill="#11151e" stroke="#394257"/>
+                    <text x="530" y="92" fill="#e7eaf0" font-size="13" font-weight="600">Raga Radio</text>
+                    <text x="530" y="110" fill="#8b94a6" font-size="11">the live page</text>
+                    <rect x="530" y="126" width="148" height="60" rx="5" fill="#161b26" stroke="#2a3040"/>
+                    <text x="542" y="147" fill="#6e8bff" font-size="11.5">▶ Ahir Bhairav</text>
+                    <rect x="542" y="158" width="110" height="4" rx="2" fill="#2a3040"/>
+                    <rect x="542" y="158" width="62" height="4" rx="2" fill="#6e8bff"/>
+                    <text x="542" y="178" fill="#8b94a6" font-size="10">Peaceful · 4–7 AM</text>
+
+                    <path d="M212 146 L264 146" stroke="#6e8bff" stroke-width="1.3" marker-end="url(#b1)"/>
+                    <path d="M460 146 L512 146" stroke="#6e8bff" stroke-width="1.3" marker-end="url(#b1)"/>
+                    <text x="470" y="136" fill="#8b94a6" font-size="10.5">execute()</text>
+
+                    <path d="M600 222 C600 244, 150 244, 150 226" stroke="#8b94a6" stroke-width="1.2" fill="none" marker-end="url(#b2)"/>
+                    <text x="330" y="256" fill="#8b94a6" font-size="10.5">returns a JSON string — not MCP content blocks</text>
+                </g>
+            </svg>
+            <figcaption>
+                No sandbox, no relay, no second origin. The trust model is simply that this is a first-party page
+                the user already chose to open.
+            </figcaption>
+        </figure>
+
+        <h2>Registering the tools</h2>
+        <p>
+            Raga Radio's data makes the tool definitions almost write themselves. Every raga already carries a
+            mood array and a time window, so "peaceful" and "something for this hour" are lookups, not guesses.
+        </p>
+
+        <p>
+            Three things below come from the app, not from WebMCP: <code>ALL_RAGAS</code> is the catalogue
+            exported by <code>src/data/ragas.js</code>, <code>player</code> is the audio controller the
+            on-screen buttons already call, and <code>resolveRaga</code> matches an id or display name against
+            that catalogue. The tools are a second doorway into code that already runs.
+        </p>
+
+        <p class="code-label">player-tools.js</p>
+        <pre><code>// Chrome 150 deprecated the navigator form; keep the fallback while the
+// origin trial ships both, and drop it once the trial ends.
+const mc = document.modelContext ?? navigator.modelContext;
+
+const controller = new AbortController();
+
+// ragas.js exports an object keyed by id, so flatten it once and keep
+// the id alongside the record.
+const ALL_RAGAS = Object.entries(ragas).map(([id, r]) => ({ id, ...r }));
+
+await mc?.registerTool({
+  name: "play_raga",
+  title: "Play a raga",
+  description:
+    "Play a specific raga in the radio. Accepts a raga id such as " +
+    "'ahirBhairav' or a display name such as 'Ahir Bhairav'.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      raga: { type: "string", description: "Raga id or display name" },
+    },
+    required: ["raga"],
+  },
+  annotations: { readOnlyHint: false },
+  async execute({ raga }) {
+    const match = resolveRaga(raga);
+    if (!match) return { ok: false, reason: `Unknown raga: ${raga}` };
+
+    await player.play(match.id);
+    return {
+      ok: true,
+      nowPlaying: match.name,
+      thaat: match.thaat,
+      time: match.time,
+      mood: match.mood,
+    };
+  },
+}, { signal: controller.signal });</code></pre>
+
+        <p>
+            The second tool is the one that makes this feel like a radio rather than a jukebox. It takes a mood,
+            filters the catalogue, and starts playing — the user never names a raga at all.
+        </p>
+
+        <pre><code>await mc?.registerTool({
+  name: "set_mood",
+  title: "Set the mood",
+  description:
+    "Filter the station by mood and start playing. Moods include " +
+    "Devotional, Peaceful, Romantic, Serious, Majestic.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      mood: { type: "string" },
+      respectTimeOfDay: {
+        type: "boolean",
+        description: "Prefer ragas whose traditional time window matches now",
+      },
+    },
+    required: ["mood"],
+  },
+  annotations: { readOnlyHint: false },
+  async execute({ mood, respectTimeOfDay = true }) {
+    // Each raga carries mood: ['Devotional', 'Peaceful', 'Romantic']
+    let pool = ALL_RAGAS.filter((r) =&gt;
+      r.mood.some((m) =&gt; m.toLowerCase() === mood.toLowerCase())
+    );
+
+    if (respectTimeOfDay) {
+      const byHour = pool.filter((r) =&gt; windowCovers(r.time, new Date()));
+      if (byHour.length) pool = byHour;
+    }
+
+    if (!pool.length) return { ok: false, reason: `No ragas match ${mood}` };
+
+    const chosen = pool[Math.floor(Math.random() * pool.length)];
+    await player.play(chosen.id);
+    return { ok: true, nowPlaying: chosen.name, matched: pool.length };
+  },
+}, { signal: controller.signal });
+
+// Unregistering is the signal, not a method.
+window.addEventListener("pagehide", () =&gt; controller.abort());</code></pre>
+
+        <h2>The lifecycle</h2>
+        <p>
+            Registration happens on load; discovery happens whenever the agent looks; execution runs your
+            callback in the page. The tools live exactly as long as the tab does.
+        </p>
+
+        <figure>
+            <svg viewBox="0 0 720 236" role="img" aria-label="Sequence diagram: the page registers tools on load, the agent discovers them, calls execute, and receives a JSON string back.">
+                <g font-family="Manrope, sans-serif" font-size="12">
+                    <text x="86" y="22" fill="#e7eaf0" font-weight="600" text-anchor="middle">page</text>
+                    <text x="360" y="22" fill="#e7eaf0" font-weight="600" text-anchor="middle">document.modelContext</text>
+                    <text x="636" y="22" fill="#e7eaf0" font-weight="600" text-anchor="middle">agent</text>
+                    <line x1="86" y1="34" x2="86" y2="222" stroke="#2a3040"/>
+                    <line x1="360" y1="34" x2="360" y2="222" stroke="#2a3040"/>
+                    <line x1="636" y1="34" x2="636" y2="222" stroke="#2a3040"/>
+
+                    <path d="M88 60 L356 60" stroke="#6e8bff" stroke-width="1.2" marker-end="url(#b1)"/>
+                    <text x="222" y="52" fill="#6e8bff" font-size="11" text-anchor="middle">registerTool({ name, description, execute })</text>
+
+                    <path d="M634 92 L364 92" stroke="#8b94a6" stroke-width="1.2" marker-end="url(#b2)"/>
+                    <text x="498" y="84" fill="#8b94a6" font-size="11" text-anchor="middle">getTools()</text>
+
+                    <path d="M634 124 L364 124" stroke="#6e8bff" stroke-width="1.2" marker-end="url(#b1)"/>
+                    <text x="498" y="116" fill="#6e8bff" font-size="11" text-anchor="middle">executeTool(tool, { mood: "Peaceful" })</text>
+
+                    <path d="M358 156 L90 156" stroke="#6e8bff" stroke-width="1.2" marker-end="url(#b1)"/>
+                    <text x="222" y="148" fill="#6e8bff" font-size="11" text-anchor="middle">execute() runs — player.play()</text>
+
+                    <path d="M88 188 L356 188" stroke="#9fd8b4" stroke-width="1.2" marker-end="url(#b1)"/>
+                    <text x="222" y="180" fill="#9fd8b4" font-size="11" text-anchor="middle">return { ok, nowPlaying }</text>
+
+                    <path d="M362 188 L632 188" stroke="#9fd8b4" stroke-width="1.2" marker-end="url(#b1)"/>
+                    <text x="498" y="180" fill="#9fd8b4" font-size="11" text-anchor="middle">serialized to a JSON string</text>
+
+                    <path d="M88 216 L356 216" stroke="#8b94a6" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#b2)"/>
+                    <text x="222" y="212" fill="#8b94a6" font-size="10.5" text-anchor="middle">pagehide → controller.abort()</text>
+                </g>
+            </svg>
+            <figcaption>
+                The serialization step on the right is the one that surprises people coming from MCP server work:
+                whatever the callback returns becomes a string before the agent sees it.
+            </figcaption>
+        </figure>
+
+        <h2>Three things that bite</h2>
+
+        <h3>Results are strings</h3>
+        <p>
+            <code>executeTool</code> resolves to a <code>DOMString</code>. Your callback can return an object, but
+            it is serialized to JSON on the way out — and anything non-serializable raises
+            <code>unserializable result</code> as an <code>OperationError</code>. If you are coming from MCP
+            server work, resist the urge to return <code>{ content: [{ type: "text", … }] }</code>. That shape
+            belongs to the other protocol.
+        </p>
+
+        <h3>Permissions Policy, not a prompt</h3>
+        <p>
+            The feature is gated by a Permissions Policy feature named <code>"tools"</code>, whose default
+            allowlist is <code>['self']</code>. Same-origin works out of the box; a cross-origin iframe that
+            wants to register tools must be granted it explicitly, and calling without permission throws
+            <code>NotAllowedError</code>. It is also <code>[SecureContext]</code> — HTTPS or localhost only.
+        </p>
+        <p>
+            Note what is <em>not</em> there: no user-gesture requirement in the spec. A page can register tools on
+            load. The protection is that the user chose to open the page, which is a weaker guarantee than the
+            MCP Apps sandbox gives you and deserves thought before exposing anything destructive. That is what
+            <code>annotations.consequentialHint</code> is for.
+        </p>
+
+        <h3>Descriptions are the API</h3>
+        <p>
+            The model picks a tool by reading its <code>description</code>. "Set the mood" is a worse description
+            than naming the actual moods, because the latter tells the model what values are legal. This is
+            prompt engineering wearing an IDL costume, and it is where most of the quality lives.
+        </p>
+
+        <h2>Against MCP Apps</h2>
+        <p>
+            The two specifications are not layered. Nothing in either references the other. What they share is
+            MCP's tool vocabulary — a name, a description, a JSON Schema — which is why
+            <code>play_raga</code> can be described almost identically in both while executing completely
+            differently.
+        </p>
+
+        <dl class="compare">
+            <div class="compare-row">
+                <dt>Direction</dt>
+                <dd>MCP Apps: server hands UI to the client. WebMCP: page hands tools to an agent.</dd>
+            </div>
+            <div class="compare-row">
+                <dt>What's missing</dt>
+                <dd>MCP Apps supplies interface the chat lacks. WebMCP supplies reach into interface that already exists.</dd>
+            </div>
+            <div class="compare-row">
+                <dt>Trust boundary</dt>
+                <dd>Sandboxed remote HTML on a host-controlled origin, versus a first-party page the user opened.</dd>
+            </div>
+            <div class="compare-row">
+                <dt>Lifetime</dt>
+                <dd>A tool call, versus as long as the tab is alive.</dd>
+            </div>
+            <div class="compare-row">
+                <dt>Session and auth</dt>
+                <dd>Server must handle its own. WebMCP inherits whatever the user is already signed into.</dd>
+            </div>
+            <div class="compare-row">
+                <dt>Maturity</dt>
+                <dd>Stable since January 2026, versus a Draft CG Report behind an origin trial.</dd>
+            </div>
+        </dl>
+
+        <h2>Where I landed</h2>
+        <p>
+            For Raga Radio they answer different questions, and I would ship them for different reasons. The MCP
+            App is the one I would actually put in front of people now: stable, host support that exists, and it
+            solves a real problem — an assistant that can reason about ragas but cannot play one.
+        </p>
+        <p>
+            WebMCP is the more interesting idea and the less finished one. A page that publishes its own
+            capabilities, in a vocabulary agents already speak, with the user's session intact, is a better
+            long-term answer than any amount of DOM-scraping automation. It has also already moved once from
+            <code>navigator</code> to <code>document</code>, which tells you roughly how settled it is.
+        </p>
+        <a class="article-next" href="mcp-apps-raga-radio.html">
+            <span class="next-label">Previously</span>
+            <span class="next-title">← Putting a radio inside a chat with MCP Apps</span>
+        </a>
+    </article>
+
+    <script src="highlight.js" defer></script>
+</body>
+</html>
