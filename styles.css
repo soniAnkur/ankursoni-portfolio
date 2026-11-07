@@ -2000,3 +2000,12 @@ section {
 }
 
 .cta-card h4 { margin-top: 0; }
+
+/* Carried over from origin/main (PR #5): keep the two project buttons on
+   one line each and let the row wrap instead. */
+.project-links { flex-wrap: wrap; }
+.project-link { white-space: nowrap; }
+
+@media (max-width: 480px) {
+    .project-link { padding: 0.65rem 1rem; }
+}
