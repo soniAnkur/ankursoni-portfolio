@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>race engine test harness</title>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/",
+            "three-mesh-bvh": "https://cdn.jsdelivr.net/npm/three-mesh-bvh@0.9.18/build/index.module.js",
+            "yuka": "https://cdn.jsdelivr.net/npm/yuka@0.7.8/build/yuka.module.js"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="race.css">
+    <style>
+      html, body { margin: 0; height: 100%; background: #000; }
+    </style>
+</head>
+<body>
+    <div id="mount" style="position:fixed;inset:0;"></div>
+    <script type="module">
+      import initRace from "./engine.js";
+
+      window.__raceHandle = initRace({
+        mount: document.getElementById('mount'),
+        onProgress: f => console.log('progress', f),
+        onCheckpoint: id => console.log('checkpoint', id),
+        onReady: () => console.log('READY'),
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+/* Night-drive intro — canvas mount, HUD, and skip control. */
+
+#race-root {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: #05030c;
+  overflow: hidden;
+}
+
+.race-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  touch-action: none;
+}
+
+body.race-active {
+  overflow: hidden;
+}
+
+#skip-to-site {
+  position: fixed;
+  top: max(1.25rem, env(safe-area-inset-top, 0px));
+  right: 1.25rem;
+  z-index: 600;
+  padding: 0.55rem 1.1rem;
+  font: 600 0.78rem/1 "Rajdhani", "Orbitron", system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8f7ff;
+  background: rgba(10, 8, 20, 0.55);
+  border: 1px solid rgba(0, 217, 255, 0.55);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.25);
+}
+
+#skip-to-site:hover,
+#skip-to-site:focus-visible {
+  color: #00d9ff;
+  border-color: #00d9ff;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.55);
+}
+
+.race-hud {
+  position: fixed;
+  left: 1.25rem;
+  bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+  z-index: 550;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  pointer-events: none;
+  font-family: "Rajdhani", system-ui, sans-serif;
+  color: #eaf6ff;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
+}
+
+.race-hud-speed {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-family: "Orbitron", system-ui, sans-serif;
+}
+
+.race-hud-speed-value {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #00d9ff;
+}
+
+.race-hud-speed-unit {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #ff3d8f;
+  opacity: 0.85;
+}
+
+.race-hud-hint {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: rgba(234, 246, 255, 0.65);
+  text-shadow: none;
+}
+
+/* Quest content card: the actual "explore more" payoff — real text shown
+   in-scene when the car gets near a kiosk. Styled against the site's
+   shared neon/glass custom properties (styles.css :root), with fallbacks
+   in case those variables aren't in scope for some reason. */
+.race-kiosk-card {
+  position: fixed;
+  /* Left side, above the speed HUD: the right/bottom-right corner is
+     already owned by the site's FAQ chat widget (faq.css, z-index 9999). */
+  left: 1.25rem;
+  bottom: max(7rem, calc(env(safe-area-inset-bottom, 0px) + 7rem));
+  z-index: 560;
+  width: min(360px, calc(100vw - 2.5rem));
+  padding: 1rem 1.2rem 1.15rem;
+  background: var(--glass-bg, rgba(255, 255, 255, 0.08));
+  border: 1px solid var(--glass-border, rgba(168, 85, 247, 0.3));
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  font-family: "Rajdhani", system-ui, sans-serif;
+  color: #eaf6ff;
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  box-shadow: 0 0 24px rgba(0, 217, 255, 0.15);
+}
+
+.race-kiosk-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.race-kiosk-card-eyebrow {
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--neon-cyan, #00d9ff);
+  margin-bottom: 0.4rem;
+}
+
+.race-kiosk-card-title {
+  margin: 0 0 0.45rem;
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+}
+
+.race-kiosk-card-body {
+  margin: 0 0 0.65rem;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: rgba(234, 246, 255, 0.88);
+}
+
+.race-kiosk-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+}
+
+.race-kiosk-card-chip {
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border, rgba(168, 85, 247, 0.3));
+  background: rgba(168, 85, 247, 0.1);
+  color: var(--neon-purple, #a855f7);
+}
+
+.race-kiosk-card-link,
+.race-kiosk-card-link-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: 600 0.8rem/1 "Rajdhani", sans-serif;
+  letter-spacing: 0.03em;
+  color: var(--neon-cyan, #00d9ff);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 217, 255, 0.35);
+  padding-bottom: 0.1rem;
+}
+
+.race-kiosk-card-link:hover,
+.race-kiosk-card-link-inline:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.race-kiosk-card-row {
+  margin: 0.3rem 0;
+  font-size: 0.82rem;
+}
+
+/* Always-visible quest progress indicator. */
+.race-progress {
+  position: fixed;
+  /* Below the site's fixed nav bar (styles.css .nav, z-index 1000, ~95px
+     tall) which floats above the race canvas regardless of z-index here. */
+  top: max(6.5rem, calc(env(safe-area-inset-top, 0px) + 6.5rem));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 550;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  font: 600 0.68rem/1 "Rajdhani", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(234, 246, 255, 0.75);
+  background: rgba(10, 8, 20, 0.5);
+  border: 1px solid var(--glass-border, rgba(168, 85, 247, 0.3));
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: calc(100vw - 2.5rem);
+  overflow-x: auto;
+}
+
+.race-progress-item.is-done {
+  color: var(--neon-green, #00ff88);
+}
+
+.race-progress-sep {
+  opacity: 0.4;
+}
+
+@media (max-width: 820px) {
+  #race-root {
+    display: none;
+  }
+}

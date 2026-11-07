@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ widget test harness</title>
+  <script type="importmap">
+  {
+      "imports": {
+          "@huggingface/transformers": "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/dist/transformers.min.js"
+      }
+  }
+  </script>
+  <link rel="stylesheet" href="faq.css">
+  <style>
+    :root {
+      --neon-cyan: #00d9ff;
+      --neon-pink: #ff3d8f;
+      --neon-teal: #14b8a6;
+      --dark-bg: #0f172a;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(168, 85, 247, 0.3);
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+    }
+    #contact {
+      padding: 40px;
+    }
+  </style>
+</head>
+<body>
+  <section id="contact">
+    <h1>FAQ widget test harness</h1>
+    <p>This is a local-only harness for src/faq/faq.js. Open the floating button in the corner.</p>
+  </section>
+  <script type="module">
+    import initFaq from "./faq.js";
+    window.__faqHandle = initFaq({
+      onProgress: (f) => console.log("faq progress", f),
+    });
+  </script>
+</body>
+</html>

@@ -57,6 +57,23 @@
         ]
     }
     </script>
+
+    <!-- Night-drive intro (desktop/capable only; falls through to the static
+         site below on mobile, reduced-motion, or no WebGL2 — see src/main.js) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/",
+            "three-mesh-bvh": "https://cdn.jsdelivr.net/npm/three-mesh-bvh@0.9.18/build/index.module.js",
+            "yuka": "https://cdn.jsdelivr.net/npm/yuka@0.7.8/build/yuka.module.js",
+            "@huggingface/transformers": "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/dist/transformers.min.js"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="src/splash/splash.css">
+    <link rel="stylesheet" href="src/race/race.css">
+    <link rel="stylesheet" href="src/faq/faq.css">
 </head>
 <body>
     <!-- Animated Background -->
@@ -789,5 +806,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>

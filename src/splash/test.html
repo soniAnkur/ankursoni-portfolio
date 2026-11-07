@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splash test harness</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --neon-cyan: #00d9ff;
+    --neon-pink: #ff3d8f;
+    --neon-green: #00ff88;
+    --neon-purple: #a855f7;
+    --neon-teal: #14b8a6;
+
+    --dark-bg: #0f172a;
+    --darker-bg: #020617;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(168, 85, 247, 0.3);
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+  }
+
+  html, body {
+    margin: 0;
+    background: var(--darker-bg);
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  #log {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000000;
+    color: #0f0;
+    background: rgba(0,0,0,0.6);
+    font: 12px monospace;
+    padding: 4px 8px;
+  }
+</style>
+
+<link rel="stylesheet" href="splash.css">
+</head>
+<body>
+<div id="log">booting test harness…</div>
+
+<script type="module">
+  import initSplash from "./splash.js";
+
+  const log = document.getElementById("log");
+  const print = (msg) => {
+    console.log(msg);
+    log.textContent = msg;
+  };
+
+  const splash = initSplash();
+  window.__splash = splash;
+  print("splash mounted, el=" + splash.el.tagName + "." + splash.el.className);
+
+  const labels = [
+    null,
+    null,
+    "Compiling shaders…",
+    null,
+    "Downloading co-pilot model… 2.1MB / 6MB",
+    null,
+    "Calibrating headlights…",
+    null,
+  ];
+
+  let step = 0;
+  const totalSteps = 24;
+
+  const interval = setInterval(() => {
+    step += 1;
+    const fraction = Math.min(1, step / totalSteps);
+    const label = labels[step % labels.length];
+    splash.setProgress(fraction, label);
+    print(`setProgress(${fraction.toFixed(2)}, ${label ? JSON.stringify(label) : "undefined"})`);
+
+    if (step >= totalSteps) {
+      clearInterval(interval);
+      print("progress complete, calling splash.complete()…");
+      splash.complete().then(() => {
+        print("splash.complete() resolved — overlay removed: " + (document.querySelector(".splash-overlay") === null));
+      });
+    }
+  }, 150);
+</script>
+</body>
+</html>
