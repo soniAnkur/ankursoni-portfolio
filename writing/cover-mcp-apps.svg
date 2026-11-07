@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200" role="img" aria-label="A chat bubble containing an embedded audio player">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1118"/>
+      <stop offset="100%" stop-color="#090b11"/>
+    </linearGradient>
+    <linearGradient id="glow1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6e8bff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#58c7e0" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="320" height="200" fill="url(#bg1)"/>
+  <circle cx="268" cy="34" r="74" fill="#6e8bff" opacity="0.07"/>
+
+  <!-- incoming message -->
+  <rect x="24" y="26" width="150" height="10" rx="5" fill="#2a3040"/>
+  <rect x="24" y="44" width="104" height="10" rx="5" fill="#222836"/>
+
+  <!-- the embedded app: a player inside the conversation -->
+  <rect x="24" y="72" width="248" height="86" rx="10" fill="#11151e" stroke="#394257"/>
+  <rect x="24" y="72" width="248" height="86" rx="10" fill="none" stroke="#6e8bff" stroke-opacity="0.35"/>
+
+  <circle cx="54" cy="104" r="13" fill="none" stroke="#6e8bff" stroke-width="1.4"/>
+  <path d="M50 99 L61 104 L50 109 Z" fill="#6e8bff"/>
+
+  <rect x="78" y="94" width="92" height="7" rx="3.5" fill="#2a3040"/>
+  <rect x="78" y="110" width="56" height="5" rx="2.5" fill="#1d2330"/>
+
+  <rect x="78" y="130" width="170" height="4" rx="2" fill="#222836"/>
+  <rect x="78" y="130" width="68" height="4" rx="2" fill="url(#glow1)"/>
+  <circle cx="146" cy="132" r="4.5" fill="#6e8bff"/>
+
+  <text x="196" y="100" font-family="ui-monospace, Menlo, monospace" font-size="9.5" fill="#58c7e0">ui://</text>
+
+  <!-- reply beneath -->
+  <rect x="24" y="172" width="118" height="9" rx="4.5" fill="#1d2330"/>
+</svg>
