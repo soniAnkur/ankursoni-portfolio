@@ -1948,3 +1948,55 @@ section {
 
 .opportunities-list li::before,
 .opportunities-list li::marker { content: none; }
+
+/* --- kill the box that came back on hover --- */
+.cta-card:hover {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* Last of the cyan hovers. */
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: var(--text-primary);
+}
+
+/* The ▹ marker is gone, so drop the indent it was sitting in. */
+.opportunities-list li {
+    padding-left: 0;
+    color: var(--text-primary);
+}
+
+.flagship {
+    border-radius: 0;
+}
+
+.flagship:hover {
+    border-color: transparent;
+}
+
+/* A full-width button is just another big box. Size it to its label. */
+.btn-large {
+    width: auto;
+    padding: 0.95rem 1.6rem;
+    font-size: 0.95rem;
+}
+
+.contact-cta .cta-note {
+    max-width: 48ch;
+}
+
+/* The note was butting straight up against the last list row, so it read
+   as a sixth item rather than an aside. */
+.opportunities-list { margin-bottom: 0; }
+
+.contact-cta .cta-note {
+    margin: 1.75rem 0 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.cta-card h4 { margin-top: 0; }
