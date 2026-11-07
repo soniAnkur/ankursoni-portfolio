@@ -5,27 +5,34 @@
 
 /* Vibrant Theme (Default) */
 :root {
-    /* Vibrant Modern Color Palette */
-    --neon-cyan: #00d9ff;           /* Bright Cyan */
-    --neon-pink: #ff3d8f;           /* Hot Pink */
-    --neon-green: #00ff88;          /* Electric Green */
-    --neon-blue: #6366f1;           /* Indigo */
-    --neon-purple: #a855f7;         /* Vibrant Purple */
-    --neon-yellow: #fbbf24;         /* Amber */
-    --neon-orange: #f97316;         /* Bright Orange */
-    --neon-teal: #14b8a6;           /* Teal */
+    /* One interactive accent, one status green, one warm highlight.
+       The colour interest lives in the WebGL backdrop, not the chrome. */
+    --accent: #6e8bff;              /* Iris — every interactive state */
+    --accent-soft: rgba(110, 139, 255, 0.14);
+    --signal: #4ade9b;              /* Live / success only */
+    --highlight: #e8b65a;           /* Warm, for emphasis only */
 
-    /* Base Colors - Modern Dark Theme */
-    --dark-bg: #0f172a;             /* Slate 900 */
-    --darker-bg: #020617;           /* Slate 950 */
-    --card-bg: rgba(30, 41, 59, 0.7);
-    --glass-bg: rgba(255, 255, 255, 0.08);
-    --glass-border: rgba(168, 85, 247, 0.3);
+    /* Legacy names kept so the whole sheet inherits the new palette */
+    --neon-cyan: var(--accent);
+    --neon-blue: var(--accent);
+    --neon-purple: var(--accent);
+    --neon-teal: var(--accent);
+    --neon-pink: var(--accent);
+    --neon-green: var(--signal);
+    --neon-yellow: var(--highlight);
+    --neon-orange: var(--highlight);
+
+    /* Base */
+    --dark-bg: #080a0f;
+    --darker-bg: #05070b;
+    --card-bg: rgba(17, 21, 30, 0.72);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.09);
 
     /* Text */
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;      /* Slate 300 */
-    --text-accent: var(--neon-teal);
+    --text-primary: #e7eaf0;
+    --text-secondary: #949db1;
+    --text-accent: var(--accent);
 
     /* Spacing */
     --section-padding: 120px;
@@ -34,27 +41,29 @@
 
 /* Apple Theme */
 [data-theme="apple"] {
-    /* Apple Color Palette - SF Pro inspired */
-    --neon-cyan: #007AFF;           /* iOS Blue */
-    --neon-pink: #FF2D55;           /* iOS Pink */
-    --neon-green: #34C759;          /* iOS Green */
-    --neon-blue: #5E5CE6;           /* iOS Purple */
-    --neon-purple: #AF52DE;         /* iOS Purple */
-    --neon-yellow: #FFCC00;         /* iOS Yellow */
-    --neon-orange: #FF9500;         /* iOS Orange */
-    --neon-teal: #5AC8FA;           /* iOS Teal */
+    --accent: #0a84ff;
+    --accent-soft: rgba(10, 132, 255, 0.14);
+    --signal: #30d158;
+    --highlight: #ffd60a;
 
-    /* Base Colors - Apple Dark Mode */
-    --dark-bg: #000000;             /* True Black */
-    --darker-bg: #1C1C1E;           /* Apple Gray 6 */
+    --neon-cyan: var(--accent);
+    --neon-blue: var(--accent);
+    --neon-purple: var(--accent);
+    --neon-teal: var(--accent);
+    --neon-pink: var(--accent);
+    --neon-green: var(--signal);
+    --neon-yellow: var(--highlight);
+    --neon-orange: var(--highlight);
+
+    --dark-bg: #000000;
+    --darker-bg: #1c1c1e;
     --card-bg: rgba(28, 28, 30, 0.9);
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(142, 142, 147, 0.18);
 
-    /* Text */
-    --text-primary: #FFFFFF;
-    --text-secondary: #8E8E93;      /* Apple Gray 2 */
-    --text-accent: var(--neon-cyan);
+    --text-primary: #ffffff;
+    --text-secondary: #8e8e93;
+    --text-accent: var(--accent);
 }
 
 [data-theme="apple"] body {
@@ -82,7 +91,7 @@ html {
 }
 
 body {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Manrope', sans-serif;
     background: var(--dark-bg);
     color: var(--text-primary);
     overflow-x: hidden;
@@ -99,33 +108,35 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    z-index: -2;
+    background:
+        radial-gradient(120% 80% at 18% 0%, rgba(110, 139, 255, 0.13) 0%, transparent 58%),
+        radial-gradient(90% 70% at 92% 22%, rgba(88, 199, 224, 0.07) 0%, transparent 55%),
+        var(--dark-bg);
     overflow: hidden;
 }
 
-.grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-}
-
+/* Both replaced by the WebGL depth field in backdrop.js */
+.grid-overlay,
 .particles {
-    position: absolute;
+    display: none;
+}
+
+/* Sits above the ambient gradient, below all content. Never appears at all
+   when WebGL2 is missing — the gradient alone still reads as finished. */
+#backdrop-canvas {
+    position: fixed;
+    inset: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+#backdrop-canvas.ready {
+    opacity: 1;
 }
 
 /* ===========================
@@ -154,7 +165,7 @@ body {
 }
 
 .nav-logo {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     display: flex;
@@ -177,14 +188,14 @@ body {
 }
 
 .nav-link {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-secondary);
     text-decoration: none;
     position: relative;
     transition: color 0.3s ease;
-    letter-spacing: 2px;
+    letter-spacing: 0.8px;
 }
 
 .nav-link::after {
@@ -323,26 +334,16 @@ body {
     justify-content: center;
 }
 
-.profile-ring,
-.profile-ring-2 {
+.profile-ring {
     position: absolute;
     border-radius: 50%;
-    border: 2px solid var(--neon-cyan);
-}
-
-.profile-ring {
-    width: 320px;
-    height: 320px;
-    animation: rotate 10s linear infinite;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    width: 324px;
+    height: 324px;
+    border: 1px solid var(--glass-border);
 }
 
 .profile-ring-2 {
-    width: 340px;
-    height: 340px;
-    border-color: var(--neon-teal);
-    animation: rotate 15s linear infinite reverse;
-    box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
+    display: none;
 }
 
 @keyframes rotate {
@@ -355,10 +356,8 @@ body {
     height: 280px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--neon-cyan);
-    box-shadow:
-        0 0 40px rgba(0, 255, 255, 0.6),
-        inset 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
     position: relative;
     z-index: 10;
 }
@@ -372,10 +371,10 @@ body {
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
     border: 1px solid var(--glass-border);
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.8rem;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 0.8px;
 }
 
 .status-dot {
@@ -384,7 +383,6 @@ body {
     background: var(--neon-teal);
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
-    box-shadow: 0 0 10px var(--neon-teal);
 }
 
 @keyframes pulse {
@@ -399,16 +397,15 @@ body {
 }
 
 .hero-subtitle {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
     font-weight: 500;
-    color: var(--neon-cyan);
-    letter-spacing: 4px;
-    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0;
 }
 
 .hero-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 4.5rem;
     font-weight: 900;
     line-height: 1;
@@ -455,41 +452,36 @@ body {
 }
 
 .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 1rem;
+    display: flex;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 1.5rem;
 }
 
 .stat {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 1px solid var(--glass-border);
-    text-align: center;
-    transition: all 0.3s ease;
+    flex: 1;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--glass-border);
 }
 
-.stat:hover {
-    background: rgba(0, 255, 255, 0.1);
-    border-color: var(--neon-cyan);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+.stat:first-child {
+    padding-left: 0;
+    border-left: none;
 }
 
 .stat-value {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.25rem;
     font-weight: 700;
-    color: var(--neon-cyan);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-top: 0.5rem;
-    letter-spacing: 1px;
+    margin-top: 0.35rem;
+    letter-spacing: 0;
 }
 
 .hero-cta {
@@ -503,12 +495,12 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-    border-radius: 50px;
-    font-family: 'Orbitron', sans-serif;
+    border-radius: 10px;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
-    letter-spacing: 2px;
+    letter-spacing: 0.8px;
     transition: all 0.3s ease;
     cursor: pointer;
     border: none;
@@ -537,12 +529,12 @@ body {
 .btn-primary {
     background: var(--neon-cyan);
     color: var(--dark-bg);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(3, 5, 11, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 15px 40px rgba(3, 5, 11, 0.6);
 }
 
 .btn-secondary {
@@ -550,13 +542,13 @@ body {
     backdrop-filter: blur(10px);
     color: var(--text-primary);
     border: 2px solid var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(3, 5, 11, 0.2);
 }
 
 .btn-secondary:hover {
     background: rgba(0, 255, 255, 0.1);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(3, 5, 11, 0.4);
 }
 
 .hero-social {
@@ -584,7 +576,7 @@ body {
     border-color: var(--neon-cyan);
     color: var(--neon-cyan);
     transform: translateY(-5px) rotate(360deg);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(3, 5, 11, 0.4);
 }
 
 .scroll-indicator {
@@ -612,9 +604,9 @@ body {
 }
 
 .scroll-text {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.8rem;
-    letter-spacing: 3px;
+    letter-spacing: 1.2px;
 }
 
 /* ===========================
@@ -640,7 +632,7 @@ section {
 }
 
 .section-number {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 4rem;
     font-weight: 900;
     color: var(--neon-cyan);
@@ -648,10 +640,10 @@ section {
 }
 
 .section-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 3rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.8px;
 }
 
 .section-line {
@@ -710,7 +702,7 @@ section {
     background: rgba(0, 255, 255, 0.05);
     border-color: var(--neon-cyan);
     transform: translateX(10px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(3, 5, 11, 0.2);
 }
 
 .highlight-icon {
@@ -740,16 +732,16 @@ section {
 .info-card:hover {
     background: rgba(0, 255, 255, 0.05);
     border-color: var(--neon-cyan);
-    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(3, 5, 11, 0.2);
     transform: translateY(-5px);
 }
 
 .info-card h3 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.3rem;
     color: var(--neon-cyan);
     margin-bottom: 1.5rem;
-    letter-spacing: 2px;
+    letter-spacing: 0.8px;
 }
 
 .info-item {
@@ -808,11 +800,11 @@ section {
     background: rgba(0, 255, 255, 0.05);
     border-color: var(--neon-cyan);
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(3, 5, 11, 0.3);
 }
 
 .skill-category-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 2rem;
     display: flex;
@@ -847,7 +839,7 @@ section {
     background: var(--neon-cyan);
     color: var(--dark-bg);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 10px 20px rgba(3, 5, 11, 0.4);
 }
 
 /* ===========================
@@ -867,23 +859,21 @@ section {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
-    border-radius: 25px;
+    border-radius: 8px;
     color: var(--text-secondary);
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 500;
+    letter-spacing: 0;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: rgba(0, 255, 255, 0.1);
-    border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+    background: var(--accent-soft);
+    border-color: rgba(110, 139, 255, 0.45);
+    color: var(--text-primary);
 }
 
 .projects-grid {
@@ -905,7 +895,7 @@ section {
 .project-card:hover {
     transform: translateY(-10px);
     border-color: var(--neon-cyan);
-    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(3, 5, 11, 0.3);
 }
 
 .project-badge {
@@ -915,19 +905,27 @@ section {
     padding: 0.5rem 1rem;
     background: var(--neon-teal);
     border-radius: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--dark-bg);
     letter-spacing: 1px;
     z-index: 10;
-    box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
+    box-shadow: 0 5px 15px rgba(3, 5, 11, 0.4);
 }
 
+.project-badge.badge-soon {
+    background: var(--neon-yellow);
+    box-shadow: 0 5px 15px rgba(3, 5, 11, 0.4);
+}
+
+/* No screenshots yet, so this is a header strip for the badge and stack
+   line rather than an empty 200px image well. */
 .project-image {
     width: 100%;
-    height: 200px;
-    background: rgba(0, 255, 255, 0.1);
+    height: 88px;
+    background: linear-gradient(180deg, rgba(110, 139, 255, 0.07) 0%, transparent 100%);
+    border-bottom: 1px solid var(--glass-border);
     position: relative;
     overflow: hidden;
 }
@@ -965,7 +963,7 @@ section {
 }
 
 .project-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
@@ -985,13 +983,13 @@ section {
 }
 
 .tag {
-    padding: 0.4rem 1rem;
-    background: rgba(0, 217, 255, 0.1);
-    border: 1px solid var(--neon-cyan);
-    border-radius: 15px;
-    font-size: 0.8rem;
-    color: var(--neon-cyan);
-    letter-spacing: 1px;
+    padding: 0.35rem 0.75rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    letter-spacing: 0;
 }
 
 .project-links {
@@ -1019,7 +1017,7 @@ section {
     background: var(--neon-cyan);
     color: var(--dark-bg);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 10px 20px rgba(3, 5, 11, 0.4);
 }
 
 .more-projects {
@@ -1036,7 +1034,7 @@ section {
 }
 
 .more-content h3 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--neon-cyan);
@@ -1101,7 +1099,7 @@ section {
 .update-card:hover {
     transform: translateY(-6px);
     border-color: var(--neon-green);
-    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15);
+    box-shadow: 0 20px 40px rgba(3, 5, 11, 0.15);
 }
 
 .update-card-header {
@@ -1109,7 +1107,7 @@ section {
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1.1rem;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .update-icon {
@@ -1117,7 +1115,6 @@ section {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
 }
 
 .update-date {
@@ -1159,7 +1156,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.75rem;
     letter-spacing: 1.5px;
     color: var(--neon-green);
@@ -1183,7 +1180,7 @@ section {
 }
 
 .contact-text h3 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--neon-cyan);
@@ -1218,7 +1215,7 @@ section {
     background: rgba(0, 255, 255, 0.05);
     border-color: var(--neon-cyan);
     transform: translateX(10px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(3, 5, 11, 0.2);
 }
 
 .contact-icon {
@@ -1263,11 +1260,11 @@ section {
 .cta-card:hover {
     background: rgba(0, 255, 255, 0.05);
     border-color: var(--neon-cyan);
-    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(3, 5, 11, 0.3);
 }
 
 .cta-card h4 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: var(--neon-teal);
@@ -1326,7 +1323,7 @@ section {
 }
 
 .footer-logo {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     display: flex;
@@ -1353,10 +1350,10 @@ section {
 }
 
 .footer-column h4 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     color: var(--neon-cyan);
     margin-bottom: 0.5rem;
-    letter-spacing: 2px;
+    letter-spacing: 0.8px;
 }
 
 .footer-column a {

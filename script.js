@@ -6,7 +6,6 @@
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
-    initParticles();
     initNavigation();
     initProjectFilters();
     initScrollAnimations();
@@ -51,82 +50,8 @@ function initTheme() {
         // Save preference
         localStorage.setItem('theme', newTheme);
 
-        // Update particles with new theme colors
-        updateParticleColors(newTheme);
     });
 }
-
-function updateParticleColors(theme) {
-    const particlesContainer = document.getElementById('particles');
-    particlesContainer.innerHTML = '';
-    initParticles();
-}
-
-// ===========================
-// PARTICLE ANIMATION
-// ===========================
-function initParticles() {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 22;
-
-    for (let i = 0; i < particleCount; i++) {
-        createParticle(particlesContainer);
-    }
-}
-
-function createParticle(container) {
-    const particle = document.createElement('div');
-    const size = Math.random() * 3 + 1;
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const duration = Math.random() * 20 + 10;
-    const delay = Math.random() * 5;
-
-    // Get theme-specific colors
-    const html = document.documentElement;
-    const isAppleTheme = html.getAttribute('data-theme') === 'apple';
-
-    const colors = isAppleTheme
-        ? ['#007AFF', '#FF2D55', '#34C759', '#5AC8FA', '#AF52DE', '#FF9500'] // Apple colors
-        : ['#00d9ff', '#ff3d8f', '#00ff88', '#a855f7', '#14b8a6', '#f97316']; // Vibrant colors
-
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    particle.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        background: ${randomColor};
-        border-radius: 50%;
-        left: ${x}%;
-        top: ${y}%;
-        opacity: ${Math.random() * 0.5 + 0.2};
-        animation: float ${duration}s ease-in-out ${delay}s infinite;
-        box-shadow: 0 0 ${size * 3}px currentColor;
-    `;
-
-    container.appendChild(particle);
-}
-
-// Add CSS animation for particles
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes float {
-        0%, 100% {
-            transform: translate(0, 0) rotate(0deg);
-        }
-        25% {
-            transform: translate(20px, -20px) rotate(90deg);
-        }
-        50% {
-            transform: translate(-20px, 20px) rotate(180deg);
-        }
-        75% {
-            transform: translate(-20px, -20px) rotate(270deg);
-        }
-    }
-`;
-document.head.appendChild(style);
 
 // ===========================
 // NAVIGATION
@@ -204,7 +129,9 @@ function initNavigation() {
 // ===========================
 function initProjectFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    // Scoped to #projects only, so sections that reuse .project-card for a different grid
+    // (e.g. #blog) aren't hidden by a filter button that lives in the Projects section.
+    const projectCards = document.querySelectorAll('#projects .project-card');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
