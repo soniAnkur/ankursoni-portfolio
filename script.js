@@ -22,11 +22,7 @@ function initCopyrightYear() {
     }
 }
 
-// ===========================
-// THEME SWITCHER
-// ===========================
-// The old two-state apple/vibrant toggle is superseded by the theme
-// switcher at the bottom of this file, which handles persistence itself.
+// Theme switching lives in theme.js, which the article pages load too.
 
 // ===========================
 // NAVIGATION
@@ -429,34 +425,3 @@ document.querySelectorAll('.feed-more').forEach((btn) => {
         btn.setAttribute('aria-expanded', String(open));
     });
 });
-
-// ===========================
-// THEME SWITCHER
-// ===========================
-(() => {
-    const link = document.getElementById('themeCss');
-    const buttons = [...document.querySelectorAll('.theme-dot')];
-    if (!link || !buttons.length) return;
-
-    const known = window.__THEMES__ || [];
-    const fallback = window.__THEME__ || 'iris-dark';
-
-    let saved = null;
-    try { saved = localStorage.getItem('theme'); } catch {}
-    // Older builds stored "apple"/"vibrant" here; ignore anything unknown.
-    const start = known.includes(saved) ? saved : fallback;
-
-    const apply = (name, persist) => {
-        link.href = `themes/${name}.css`;
-        document.documentElement.dataset.siteTheme = name;
-        buttons.forEach((b) => {
-            const on = b.dataset.themeName === name;
-            b.classList.toggle('is-active', on);
-            b.setAttribute('aria-pressed', String(on));
-        });
-        if (persist) { try { localStorage.setItem('theme', name); } catch {} }
-    };
-
-    apply(start, false);
-    buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.themeName, true)));
-})();

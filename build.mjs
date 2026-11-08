@@ -352,6 +352,7 @@ ${site.footer.stats.map((t) => `                    <span>${esc(t)}</span>`).joi
     </footer>
 
     <script>window.__THEMES__ = ${JSON.stringify(themes)}; window.__THEME__ = "${theme}";</script>
+    <script src="theme.js"></script>
     <script src="script.js"></script>
     <script src="backdrop.js" defer></script>
 </body>

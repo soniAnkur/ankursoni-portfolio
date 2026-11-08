@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="article.css">
+    <link rel="stylesheet" id="themeCss" href="../themes/iris-dark.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,7 +24,16 @@
     <div class="tech-bg"></div>
 
     <article class="article">
-        <a class="article-back" href="/#blog">← Writing</a>
+        <div class="article-top">
+            <a class="article-back" href="/#blog">← Writing</a>
+            <div class="theme-switch" role="group" aria-label="Colour theme">
+                <button type="button" class="theme-dot" data-theme-name="iris-dark" title="Iris dark" aria-label="Iris dark"><span style="background:#6e8bff"></span></button>
+                <button type="button" class="theme-dot" data-theme-name="warm-dark" title="Warm dark" aria-label="Warm dark"><span style="background:#e8b14c"></span></button>
+                <button type="button" class="theme-dot" data-theme-name="technical-light" title="Technical light" aria-label="Technical light"><span style="background:#fcfcfa"></span></button>
+                <button type="button" class="theme-dot" data-theme-name="pastel" title="Pastel" aria-label="Pastel"><span style="background:#e9c2d0"></span></button>
+                <button type="button" class="theme-dot" data-theme-name="swiss" title="Swiss" aria-label="Swiss"><span style="background:#ff3b00"></span></button>
+            </div>
+        </div>
 
         <p class="article-kicker">MCP Apps</p>
         <h1>Putting a radio inside a chat</h1>
@@ -402,6 +412,7 @@ server.server.oninitialized = () => {
         </a>
     </article>
 
+    <script src="../theme.js"></script>
     <script src="highlight.js" defer></script>
 </body>
 </html>
