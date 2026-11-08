@@ -434,23 +434,9 @@ const skipLink = document.createElement('a');
 skipLink.href = '#about';
 skipLink.textContent = 'Skip to main content';
 skipLink.className = 'skip-link';
-skipLink.style.cssText = `
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #00ffcc;
-    color: #0d0221;
-    padding: 8px 16px;
-    text-decoration: none;
-    z-index: 10000;
-    font-weight: bold;
-`;
-skipLink.addEventListener('focus', () => {
-    skipLink.style.top = '0';
-});
-skipLink.addEventListener('blur', () => {
-    skipLink.style.top = '-40px';
-});
+// styling lives in styles.css so it follows the active theme
+skipLink.addEventListener('focus', () => skipLink.classList.add('is-visible'));
+skipLink.addEventListener('blur', () => skipLink.classList.remove('is-visible'));
 document.body.insertBefore(skipLink, document.body.firstChild);
 
 console.log('%c✅ Portfolio initialized successfully!', 'color: #00ff00; font-size: 14px; font-weight: bold;');

@@ -2088,3 +2088,26 @@ section {
 
     .post-cover { width: 100%; }
 }
+
+/* Skip link — was inline-styled in JS with a hardcoded colour, which broke
+   on any theme but the original. */
+.skip-link {
+    position: fixed;
+    top: -60px;
+    left: 0;
+    z-index: 10000;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: var(--dark-bg);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: top 0.15s ease;
+}
+
+.skip-link.is-visible,
+.skip-link:focus-visible { top: 0; }
+
+/* The logo became an anchor in the template; stop the default underline. */
+.nav-logo { text-decoration: none; }
+.nav-logo:hover { opacity: 0.85; }
