@@ -25,3 +25,9 @@
 
 .btn-primary { color: #1b1206; }
 .project-badge { color: #1b1206; }
+
+:root {
+    --nav-bg: rgba(20, 18, 16, 0.82);
+    --nav-bg-scrolled: rgba(14, 12, 11, 0.95);
+    --footer-bg: rgba(14, 12, 11, 0.9);
+}

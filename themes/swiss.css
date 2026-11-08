@@ -1,10 +1,10 @@
 /* swiss — white, strict, one spot colour. Least forgiving of the four:
    without real discipline it reads unfinished rather than rigorous. */
 :root {
-    --accent: #ff3b00;
+    --accent: #d93100;
     --accent-soft: rgba(255, 59, 0, 0.08);
     --signal: #0a0a0a;
-    --highlight: #ff3b00;
+    --highlight: #d93100;
 
     --dark-bg: #ffffff;
     --darker-bg: #fafafa;
@@ -39,7 +39,16 @@ body { background: var(--dark-bg); }
 .article pre { background: #fafafa; border-color: var(--glass-border); border-radius: 0; }
 .article pre code { color: #0a0a0a; }
 .tok-k { color: #0a0a0a; font-weight: 600; }
-.tok-s { color: #ff3b00; }
+.tok-s { color: #d93100; }
 .tok-c { color: #9a9a9a; }
 .tok-f { color: #0a0a0a; }
 .tok-n { color: #737373; }
+
+:root {
+    --nav-bg: rgba(255, 255, 255, 0.86);
+    --nav-bg-scrolled: #ffffff;
+    --footer-bg: #ffffff;
+}
+
+.footer { border-top: 1px solid var(--glass-border); }
+.nav.is-scrolled { box-shadow: none; border-bottom-color: #0a0a0a; }

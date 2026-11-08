@@ -23,7 +23,7 @@
     <meta name="twitter:image" content="https://www.ankursoni.com/profile-cyberpunk.png">
 
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="themes/iris-dark.css">
+    <link rel="stylesheet" id="themeCss" href="themes/iris-dark.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -80,9 +80,13 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                </button>
+                <div class="theme-switch" role="group" aria-label="Colour theme">
+                    <button type="button" class="theme-dot" data-theme-name="iris-dark" title="Iris dark" aria-label="Iris dark"><span style="background:#6e8bff"></span></button>
+                    <button type="button" class="theme-dot" data-theme-name="warm-dark" title="Warm dark" aria-label="Warm dark"><span style="background:#e8b14c"></span></button>
+                    <button type="button" class="theme-dot" data-theme-name="technical-light" title="Technical light" aria-label="Technical light"><span style="background:#fcfcfa"></span></button>
+                    <button type="button" class="theme-dot" data-theme-name="pastel" title="Pastel" aria-label="Pastel"><span style="background:#e9c2d0"></span></button>
+                    <button type="button" class="theme-dot" data-theme-name="swiss" title="Swiss" aria-label="Swiss"><span style="background:#ff3b00"></span></button>
+                </div>
                 <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
         </div>
@@ -601,6 +605,7 @@
         </div>
     </footer>
 
+    <script>window.__THEMES__ = ["iris-dark","warm-dark","technical-light","pastel","swiss"]; window.__THEME__ = "iris-dark";</script>
     <script src="script.js"></script>
     <script src="backdrop.js" defer></script>
 </body>

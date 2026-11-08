@@ -5,7 +5,6 @@
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     initNavigation();
     initProjectFilters();
     initScrollAnimations();
@@ -26,32 +25,8 @@ function initCopyrightYear() {
 // ===========================
 // THEME SWITCHER
 // ===========================
-function initTheme() {
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-
-    // Load saved theme or default to vibrant
-    const savedTheme = localStorage.getItem('theme') || 'vibrant';
-    if (savedTheme === 'apple') {
-        html.setAttribute('data-theme', 'apple');
-    }
-
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'apple' ? 'vibrant' : 'apple';
-
-        if (newTheme === 'apple') {
-            html.setAttribute('data-theme', 'apple');
-        } else {
-            html.removeAttribute('data-theme');
-        }
-
-        // Save preference
-        localStorage.setItem('theme', newTheme);
-
-    });
-}
+// The old two-state apple/vibrant toggle is superseded by the theme
+// switcher at the bottom of this file, which handles persistence itself.
 
 // ===========================
 // NAVIGATION
@@ -63,13 +38,7 @@ function initNavigation() {
 
     // Scroll effect
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            nav.style.background = 'rgba(10, 10, 15, 0.95)';
-            nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.45)';
-        } else {
-            nav.style.background = 'rgba(10, 10, 15, 0.8)';
-            nav.style.boxShadow = 'none';
-        }
+        nav.classList.toggle('is-scrolled', window.scrollY > 100);
     });
 
     // Mobile menu toggle
@@ -460,3 +429,34 @@ document.querySelectorAll('.feed-more').forEach((btn) => {
         btn.setAttribute('aria-expanded', String(open));
     });
 });
+
+// ===========================
+// THEME SWITCHER
+// ===========================
+(() => {
+    const link = document.getElementById('themeCss');
+    const buttons = [...document.querySelectorAll('.theme-dot')];
+    if (!link || !buttons.length) return;
+
+    const known = window.__THEMES__ || [];
+    const fallback = window.__THEME__ || 'iris-dark';
+
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch {}
+    // Older builds stored "apple"/"vibrant" here; ignore anything unknown.
+    const start = known.includes(saved) ? saved : fallback;
+
+    const apply = (name, persist) => {
+        link.href = `themes/${name}.css`;
+        document.documentElement.dataset.siteTheme = name;
+        buttons.forEach((b) => {
+            const on = b.dataset.themeName === name;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-pressed', String(on));
+        });
+        if (persist) { try { localStorage.setItem('theme', name); } catch {} }
+    };
+
+    apply(start, false);
+    buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.themeName, true)));
+})();

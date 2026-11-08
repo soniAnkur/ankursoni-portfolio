@@ -44,3 +44,11 @@ body { background: var(--dark-bg); }
 .tok-c { color: #6e7781; }
 .tok-f { color: #7a4d05; }
 .tok-n { color: #8250df; }
+
+:root {
+    --nav-bg: rgba(252, 252, 250, 0.82);
+    --nav-bg-scrolled: rgba(252, 252, 250, 0.96);
+    --footer-bg: #f4f4f1;
+}
+
+.footer { border-top: 1px solid var(--glass-border); }

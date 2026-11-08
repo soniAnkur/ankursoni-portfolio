@@ -35,3 +35,7 @@ temp/
 
 # Claude
 .claude/
+
+# local theme previews
+preview-*.html
+themes.html

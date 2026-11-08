@@ -14,7 +14,10 @@ const site = JSON.parse(await readFile("content/site.json", "utf8"));
 
 const themeArg = process.argv.find((a) => a.startsWith("--theme="));
 const theme = themeArg ? themeArg.split("=")[1] : site.theme || "iris-dark";
-const themes = (await readdir("themes")).filter((f) => f.endsWith(".css")).map((f) => f.replace(/\.css$/, ""));
+const ORDER = ["iris-dark", "warm-dark", "technical-light", "pastel", "swiss"];
+const found = (await readdir("themes")).filter((f) => f.endsWith(".css")).map((f) => f.replace(/\.css$/, ""));
+// Present dark to light rather than however the filesystem lists them.
+const themes = [...ORDER.filter((t) => found.includes(t)), ...found.filter((t) => !ORDER.includes(t))];
 if (!themes.includes(theme)) {
   console.error(`Unknown theme "${theme}". Available: ${themes.join(", ")}`);
   process.exit(1);
@@ -47,6 +50,22 @@ const icon = {
 const socialIcon = (title = "") =>
   /linkedin/i.test(title) ? icon.linkedin : /github/i.test(title) ? icon.github : icon.mail;
 
+// Swatch = each theme's page colour, so the control previews itself.
+const THEME_SWATCH = {
+  "iris-dark": "#6e8bff",
+  "warm-dark": "#e8b14c",
+  "technical-light": "#fcfcfa",
+  "pastel": "#e9c2d0",
+  "swiss": "#ff3b00",
+};
+const THEME_LABELS = {
+  "iris-dark": "Iris dark",
+  "warm-dark": "Warm dark",
+  "technical-light": "Technical light",
+  "pastel": "Pastel",
+  "swiss": "Swiss",
+};
+
 /* ------------------------------------------------------------------ */
 
 const head = `<!DOCTYPE html>
@@ -74,7 +93,7 @@ const head = `<!DOCTYPE html>
     <meta name="twitter:image" content="${attr(site.meta.ogImage)}">
 
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="themes/${attr(theme)}.css">
+    <link rel="stylesheet" id="themeCss" href="themes/${attr(theme)}.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -114,9 +133,9 @@ const nav = `
 ${map(site.nav, (n) => `                <a href="${attr(n.href)}" class="nav-link">${esc(n.label)}</a>`)}
             </div>
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                </button>
+                <div class="theme-switch" role="group" aria-label="Colour theme">
+${themes.map((t) => `                    <button type="button" class="theme-dot" data-theme-name="${attr(t)}" title="${attr(THEME_LABELS[t] || t)}" aria-label="${attr(THEME_LABELS[t] || t)}"><span style="background:${THEME_SWATCH[t] || "#888"}"></span></button>`).join("\n")}
+                </div>
                 <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
         </div>
@@ -332,6 +351,7 @@ ${site.footer.stats.map((t) => `                    <span>${esc(t)}</span>`).joi
         </div>
     </footer>
 
+    <script>window.__THEMES__ = ${JSON.stringify(themes)}; window.__THEME__ = "${theme}";</script>
     <script src="script.js"></script>
     <script src="backdrop.js" defer></script>
 </body>
@@ -348,5 +368,8 @@ const html = [
   nav, hero, about, projects, updates, writing, contact, footer,
 ].join("\n");
 
-await writeFile("index.html", html);
-console.log(`built index.html · theme "${theme}" · ${site.projects.items.length} projects, ${site.updates.items.length} updates, ${site.writing.posts.length} posts`);
+const outArg = process.argv.find((a) => a.startsWith("--out="));
+const out = outArg ? outArg.split("=")[1] : "index.html";
+
+await writeFile(out, html);
+console.log(`built ${out} · theme "${theme}" · ${site.projects.items.length} projects, ${site.updates.items.length} updates, ${site.writing.posts.length} posts`);
