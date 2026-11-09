@@ -115,6 +115,20 @@ ${JSON.stringify({
     addressCountry: "US",
   },
   sameAs: ["https://www.linkedin.com/in/ankursoni948/", "https://github.com/soniAnkur"],
+  // Schema.org has no patent type; CreativeWork is the honest generic. The
+  // wording stays "application" everywhere because it is not granted.
+  subjectOf: {
+    "@type": "CreativeWork",
+    additionalType: "https://en.wikipedia.org/wiki/Patent_application",
+    name: site.patent.title,
+    identifier: site.patent.facts.find((f) => f.label === "Application")?.value,
+    datePublished: "2026-10-30",
+    creativeWorkStatus: "Patent application published; not granted",
+    author: site.patent.facts
+      .find((f) => f.label === "Inventors")
+      ?.value.split(", ")
+      .map((n) => ({ "@type": "Person", name: n })),
+  },
 }, null, 4)}
     </script>
 
@@ -188,6 +202,32 @@ const sectionHead = (heading) => `            <div class="section-header">
                 <h2 class="section-title">${esc(heading)}</h2>
                 <div class="section-line"></div>
             </div>`;
+
+const patent = `
+    <section id="patent" class="patent">
+        <div class="container">
+${sectionHead(site.patent.heading)}
+            <div class="patent-body">
+                <div class="patent-main">
+                    <p class="patent-status">${esc(site.patent.status)}</p>
+                    <h3 class="patent-title">${esc(site.patent.title)}</h3>
+${map(site.patent.body, (t) => `                    <p>${rich(t)}</p>`)}
+                    <p class="patent-note">${rich(site.patent.note)}</p>
+                    <a class="patent-link" href="${attr(site.patent.link.href)}" target="_blank" rel="noopener">
+                        <span>${esc(site.patent.link.label)}</span>
+                        ${icon.arrow}
+                    </a>
+                    <p class="patent-link-note">${esc(site.patent.link.note)}</p>
+                </div>
+                <dl class="patent-facts">
+${map(site.patent.facts, (f) => `                    <div class="patent-fact">
+                        <dt>${esc(f.label)}</dt>
+                        <dd>${esc(f.value)}</dd>
+                    </div>`)}
+                </dl>
+            </div>
+        </div>
+    </section>`;
 
 const about = `
     <section id="about" class="about">
@@ -366,7 +406,7 @@ const html = [
   '        <div class="grid-overlay"></div>',
   '        <div class="particles" id="particles"></div>',
   '    </div>',
-  nav, hero, about, projects, updates, writing, contact, footer,
+  nav, hero, patent, about, projects, updates, writing, contact, footer,
 ].join("\n");
 
 const outArg = process.argv.find((a) => a.startsWith("--out="));

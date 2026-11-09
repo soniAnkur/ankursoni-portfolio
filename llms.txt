@@ -9,6 +9,13 @@
 - Focus areas: AI/ML integration, children's education technology, e-commerce, business automation
 - Location: San Francisco Bay Area, California, USA
 
+## Patent
+- Indian patent application 202611109533 A, "AI-Powered Personalized Multimedia Content Generation and Distribution System for Multi-Device Ecosystem and Its Method Thereof"
+- Filed 11 September 2026; published 30 October 2026 in Patent Office Journal 44/2026
+- Inventors: Ankur Soni, Gurusha Soni, Dr. Neetu Kapoor
+- Status: published and open to public inspection. Examination has not been requested and the application has NOT been granted. Describe it as a published application or "patent pending", never as a granted patent.
+- Verify by application number at https://iprsearch.ipindia.gov.in/PublicSearch/PublicationSearch/ApplicationStatus
+
 ## Links
 - Website: https://www.ankursoni.com/
 - LinkedIn: https://www.linkedin.com/in/ankursoni948/

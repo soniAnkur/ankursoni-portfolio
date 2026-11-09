@@ -24,6 +24,10 @@
   },
   "nav": [
     {
+      "label": "Patent",
+      "href": "#patent"
+    },
+    {
       "label": "About",
       "href": "#about"
     },
@@ -94,6 +98,43 @@
         "title": "Email (Gmail)"
       }
     ]
+  },
+  "patent": {
+    "heading": "Patent",
+    "status": "Patent pending",
+    "title": "AI-Powered Personalized Multimedia Content Generation and Distribution System for Multi-Device Ecosystem",
+    "body": [
+      "A system that generates multimedia tailored to an individual — text, images, audio and video assembled per person rather than produced once for everyone — and distributes it across the devices that person already uses.",
+      "The same underlying pattern, per-person generative media delivered across a multi-device ecosystem, is now appearing in products across several industries worldwide. The application was filed before that convergence was widely visible."
+    ],
+    "facts": [
+      {
+        "label": "Application",
+        "value": "202611109533 A"
+      },
+      {
+        "label": "Jurisdiction",
+        "value": "India — Patent Office"
+      },
+      {
+        "label": "Filed",
+        "value": "11 September 2026"
+      },
+      {
+        "label": "Published",
+        "value": "30 October 2026 · Journal 44/2026"
+      },
+      {
+        "label": "Inventors",
+        "value": "Ankur Soni, Gurusha Soni, Dr. Neetu Kapoor"
+      }
+    ],
+    "note": "Published and open to public inspection. Examination has not yet been requested and the application has not been granted.",
+    "link": {
+      "label": "Verify at the IP India registry",
+      "href": "https://iprsearch.ipindia.gov.in/PublicSearch/PublicationSearch/ApplicationStatus",
+      "note": "Search by application number 202611109533"
+    }
   },
   "about": {
     "heading": "About me",
@@ -499,6 +540,10 @@
       {
         "heading": "Quick links",
         "links": [
+          {
+            "label": "Patent",
+            "href": "#patent"
+          },
           {
             "label": "About",
             "href": "#about"
