@@ -5,7 +5,6 @@
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     initNavigation();
     initProjectFilters();
     initScrollAnimations();
@@ -23,35 +22,7 @@ function initCopyrightYear() {
     }
 }
 
-// ===========================
-// THEME SWITCHER
-// ===========================
-function initTheme() {
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-
-    // Load saved theme or default to vibrant
-    const savedTheme = localStorage.getItem('theme') || 'vibrant';
-    if (savedTheme === 'apple') {
-        html.setAttribute('data-theme', 'apple');
-    }
-
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'apple' ? 'vibrant' : 'apple';
-
-        if (newTheme === 'apple') {
-            html.setAttribute('data-theme', 'apple');
-        } else {
-            html.removeAttribute('data-theme');
-        }
-
-        // Save preference
-        localStorage.setItem('theme', newTheme);
-
-    });
-}
+// Theme switching lives in theme.js, which the article pages load too.
 
 // ===========================
 // NAVIGATION
@@ -63,13 +34,7 @@ function initNavigation() {
 
     // Scroll effect
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            nav.style.background = 'rgba(10, 10, 15, 0.95)';
-            nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.45)';
-        } else {
-            nav.style.background = 'rgba(10, 10, 15, 0.8)';
-            nav.style.boxShadow = 'none';
-        }
+        nav.classList.toggle('is-scrolled', window.scrollY > 100);
     });
 
     // Mobile menu toggle
@@ -434,23 +399,9 @@ const skipLink = document.createElement('a');
 skipLink.href = '#about';
 skipLink.textContent = 'Skip to main content';
 skipLink.className = 'skip-link';
-skipLink.style.cssText = `
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #00ffcc;
-    color: #0d0221;
-    padding: 8px 16px;
-    text-decoration: none;
-    z-index: 10000;
-    font-weight: bold;
-`;
-skipLink.addEventListener('focus', () => {
-    skipLink.style.top = '0';
-});
-skipLink.addEventListener('blur', () => {
-    skipLink.style.top = '-40px';
-});
+// styling lives in styles.css so it follows the active theme
+skipLink.addEventListener('focus', () => skipLink.classList.add('is-visible'));
+skipLink.addEventListener('blur', () => skipLink.classList.remove('is-visible'));
 document.body.insertBefore(skipLink, document.body.firstChild);
 
 console.log('%c✅ Portfolio initialized successfully!', 'color: #00ff00; font-size: 14px; font-weight: bold;');

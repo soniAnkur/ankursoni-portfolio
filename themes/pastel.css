@@ -1,0 +1,48 @@
+/* pastel — soft, warm-neutral page with a muted rose accent.
+   Deliberately dusty rather than bright: saturated pink on white fails
+   contrast at body size and reads novelty rather than considered. */
+:root {
+    --accent: #9b4a69;
+    --accent-soft: rgba(155, 74, 105, 0.10);
+    --signal: #4f8a6b;
+    --highlight: #b07d3a;
+
+    --dark-bg: #fbf7f7;
+    --darker-bg: #f4eced;
+    --card-bg: rgba(255, 255, 255, 0.86);
+    --glass-bg: rgba(60, 38, 46, 0.035);
+    --glass-border: rgba(60, 38, 46, 0.13);
+
+    --text-primary: #2b2126;
+    --text-secondary: #6a5a61;
+
+    --nav-bg: rgba(251, 247, 247, 0.82);
+    --nav-bg-scrolled: rgba(251, 247, 247, 0.96);
+    --footer-bg: #f4eced;
+}
+
+body { background: var(--dark-bg); }
+
+#backdrop-canvas { display: none !important; }
+
+.tech-bg {
+    background:
+        radial-gradient(120% 80% at 18% 0%, rgba(155, 74, 105, 0.07) 0%, transparent 58%),
+        radial-gradient(90% 70% at 92% 22%, rgba(122, 142, 178, 0.06) 0%, transparent 55%),
+        var(--dark-bg);
+}
+
+.footer { border-top: 1px solid var(--glass-border); }
+
+.btn-primary { color: #ffffff; }
+.project-badge { color: #ffffff; }
+
+.profile-image { filter: none; border-color: rgba(60, 38, 46, 0.16); box-shadow: 0 14px 34px rgba(60, 38, 46, 0.14); }
+
+.article pre { background: #f6eff0; border-color: var(--glass-border); }
+.article pre code { color: #2b2126; }
+.tok-k { color: #8a3f63; }
+.tok-s { color: #3f6b55; }
+.tok-c { color: #8a7b81; }
+.tok-f { color: #8a5a2a; }
+.tok-n { color: #6a4d8a; }

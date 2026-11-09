@@ -1,0 +1,54 @@
+/* technical-light — the convention of the AI-engineer cohort (Karpathy,
+   Eugene Yan, Chip Huyen). Deliberately cool off-white, NOT the cream and
+   terracotta pairing that now reads as generated. */
+:root {
+    --accent: #1a5fb4;
+    --accent-soft: rgba(26, 95, 180, 0.10);
+    --signal: #1a7f44;
+    --highlight: #9a6700;
+
+    --dark-bg: #fcfcfa;
+    --darker-bg: #f4f4f1;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --glass-bg: rgba(22, 22, 26, 0.035);
+    --glass-border: rgba(22, 22, 26, 0.14);
+
+    --text-primary: #16161a;
+    --text-secondary: #5b5f66;
+}
+
+body { background: var(--dark-bg); }
+
+/* Light plus a drifting particle field reads unresolved, so the WebGL
+   layer is suppressed rather than restyled. */
+#backdrop-canvas { display: none !important; }
+
+.tech-bg { background: var(--dark-bg); }
+
+.nav { background: rgba(252, 252, 250, 0.86); border-bottom: 1px solid var(--glass-border); }
+
+.btn-primary { color: #ffffff; }
+.project-badge { color: #ffffff; }
+
+.profile-image { filter: none; border-color: rgba(22, 22, 26, 0.16); box-shadow: 0 14px 34px rgba(22, 22, 26, 0.12); }
+
+.project-card,
+.post-cover,
+.flagship-shot { box-shadow: 0 1px 2px rgba(22, 22, 26, 0.05); }
+
+/* Code blocks need a light scheme too, or the posts fight the page. */
+.article pre { background: #f6f6f3; border-color: var(--glass-border); }
+.article pre code { color: #16161a; }
+.tok-k { color: #0a3069; }
+.tok-s { color: #0a6a40; }
+.tok-c { color: #6e7781; }
+.tok-f { color: #7a4d05; }
+.tok-n { color: #8250df; }
+
+:root {
+    --nav-bg: rgba(252, 252, 250, 0.82);
+    --nav-bg-scrolled: rgba(252, 252, 250, 0.96);
+    --footer-bg: #f4f4f1;
+}
+
+.footer { border-top: 1px solid var(--glass-border); }

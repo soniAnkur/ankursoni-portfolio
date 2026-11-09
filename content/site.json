@@ -1,0 +1,549 @@
+{
+  "meta": {
+    "title": "Ankur Soni | Full-Stack Developer & AI Innovator",
+    "description": "Full-stack developer with 10+ years experience building AI-powered applications, educational platforms, and innovative web solutions. Senior Software Engineer at Amazon.",
+    "url": "https://www.ankursoni.com/",
+    "ogImage": "https://www.ankursoni.com/profile-cyberpunk.png",
+    "siteName": "Ankur Soni",
+    "robots": "index, follow"
+  },
+  "identity": {
+    "name": "Ankur Soni",
+    "logo": {
+      "bracket": "<",
+      "text": "ANKUR.SONI",
+      "close": "/>"
+    },
+    "role": "Senior Engineer, Amazon",
+    "tagline": "Building the future with AI & Code",
+    "status": "Open to interesting problems",
+    "intro": "Ten years building web and mobile products, most recently at Amazon. I work where applied AI meets production front-end engineering — 29 shipped projects, 15 of them live.",
+    "jobTitle": "Senior Software Engineer",
+    "employer": "Amazon",
+    "location": "Cupertino, California"
+  },
+  "nav": [
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    },
+    {
+      "label": "Updates",
+      "href": "#updates"
+    },
+    {
+      "label": "Writing",
+      "href": "#blog"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "hero": {
+    "portrait": {
+      "src": "./profile-cyberpunk.png",
+      "alt": "Portrait of Ankur Soni, full-stack developer, in a cyberpunk neon style"
+    },
+    "stats": [
+      {
+        "value": "10+",
+        "label": "Years Exp"
+      },
+      {
+        "value": "29+",
+        "label": "Projects"
+      },
+      {
+        "value": "15+",
+        "label": "Live Apps"
+      },
+      {
+        "value": "500+",
+        "label": "Connections"
+      }
+    ],
+    "actions": [
+      {
+        "label": "View projects",
+        "href": "#projects",
+        "style": "primary",
+        "icon": "arrow"
+      },
+      {
+        "label": "Get in touch",
+        "href": "#contact",
+        "style": "secondary"
+      }
+    ],
+    "social": [
+      {
+        "href": "https://www.linkedin.com/in/ankursoni948/",
+        "title": "LinkedIn - 500+ Connections"
+      },
+      {
+        "href": "https://github.com/soniAnkur",
+        "title": "GitHub - 29+ Projects (Private & Public)"
+      },
+      {
+        "href": "mailto:ankursoni948@gmail.com",
+        "title": "Email (Gmail)"
+      }
+    ]
+  },
+  "about": {
+    "heading": "About me",
+    "body": [
+      "I'm a seasoned full-stack developer with over a decade of experience building web and mobile applications. Currently working at <span class=\"highlight\">Amazon</span> in Cupertino, California, I specialize in creating innovative AI-powered solutions, educational platforms, and business tools.",
+      "My passion lies in leveraging cutting-edge technologies to solve real-world problems, with a particular focus on AI/ML integration, children's education, and e-commerce solutions. I've successfully deployed 15+ production applications and built a portfolio of 29+ projects spanning multiple domains."
+    ],
+    "railHeading": "Main projects",
+    "flagship": [
+      {
+        "href": "https://paperclip-studio-drab.vercel.app",
+        "image": "images/paperclip-studio.jpg",
+        "name": "Paperclip Studio",
+        "note": "Open-source agent studio with a live 3D dashboard."
+      },
+      {
+        "href": "https://ragaradio.vercel.app",
+        "image": "images/raga-radio.jpg",
+        "name": "Raga Radio",
+        "note": "Carnatic radio that tags and filters ragas by mood."
+      },
+      {
+        "href": "https://voicestories.vercel.app",
+        "image": "images/voicestories.jpg",
+        "name": "Voice Stories",
+        "note": "Storybooks narrated in a cloned version of your own voice."
+      }
+    ],
+    "allLink": {
+      "label": "See all 10 projects",
+      "href": "#projects"
+    }
+  },
+  "projects": {
+    "heading": "Selected work",
+    "filters": [
+      {
+        "id": "all",
+        "label": "All"
+      },
+      {
+        "id": "ai",
+        "label": "AI and ML"
+      },
+      {
+        "id": "education",
+        "label": "Education"
+      },
+      {
+        "id": "ecommerce",
+        "label": "E-commerce"
+      },
+      {
+        "id": "business",
+        "label": "Business"
+      }
+    ],
+    "items": [
+      {
+        "category": "ai education",
+        "badge": "Live",
+        "image": "images/familyhearts.jpg",
+        "imageAlt": "Screenshot of Family Hearts showing a personalized AI storybook page",
+        "stack": "Next.js • AI/ML • Node.js",
+        "title": "KidsVerse / FamilyHearts",
+        "built": "Built Sep 2025",
+        "description": "AI-powered interactive storytelling platform creating personalized storybooks where children become the main characters. Features real-time story generation and adaptive learning.",
+        "tags": [
+          "AI Story Generation",
+          "Educational",
+          "Child Profiles"
+        ],
+        "links": [
+          {
+            "href": "https://www.familyhearts.fun",
+            "label": "Live demo"
+          },
+          {
+            "href": "https://github.com/soniAnkur/kids-storybooks-demo",
+            "label": "GitHub"
+          }
+        ]
+      },
+      {
+        "category": "ai",
+        "badge": "Live",
+        "image": "images/raga-radio.jpg",
+        "imageAlt": "Screenshot of Raga Radio playing Raga Multani with mood filters",
+        "stack": "Next.js • AI Music • PWA",
+        "title": "Raga Radio",
+        "built": "Built Jan 2026",
+        "description": "AI-powered Indian classical music generator that streams an endless radio of ragas, filtered by mood: devotional, romantic, peaceful, serious or energetic.",
+        "tags": [
+          "AI Music",
+          "Generative Audio",
+          "PWA"
+        ],
+        "links": [
+          {
+            "href": "https://ragaradio.vercel.app",
+            "label": "LIVE DEMO"
+          },
+          {
+            "href": "https://github.com/soniAnkur/raga-radio",
+            "label": "GITHUB"
+          }
+        ]
+      },
+      {
+        "category": "ai education",
+        "badge": "Live",
+        "image": "images/voicestories.jpg",
+        "imageAlt": "Screenshot of Voice Stories home screen: Stories in your voice",
+        "stack": "Voice • AI • Storytelling",
+        "title": "Voice Stories",
+        "built": "Built Jan 2026",
+        "description": "Bedtime story app where parents create magical tales narrated in their own voice, so kids hear stories from the people they love.",
+        "tags": [
+          "Voice AI",
+          "Storytelling",
+          "Family"
+        ],
+        "links": [
+          {
+            "href": "https://voicestories.vercel.app",
+            "label": "LIVE DEMO"
+          },
+          {
+            "href": "https://github.com/soniAnkur/voice-stories",
+            "label": "GITHUB"
+          }
+        ]
+      },
+      {
+        "category": "ai",
+        "badge": "Live",
+        "image": "images/avatarai-v2.jpg",
+        "imageAlt": "Screenshot of the AvatarAI v2 profile setup screen",
+        "stack": "AI Video • Voice • Avatars",
+        "title": "AvatarAI v2",
+        "built": "Built Mar 2026",
+        "description": "Talking-head video generator: save a headshot and voice once, then create Quick or Cinematic videos in a chosen tone from just a topic.",
+        "tags": [
+          "AI Video",
+          "Voice Cloning",
+          "Avatars"
+        ],
+        "links": [
+          {
+            "href": "https://avatarai-v2-olive.vercel.app",
+            "label": "LIVE DEMO"
+          }
+        ]
+      },
+      {
+        "category": "ai business",
+        "badge": "",
+        "image": "",
+        "imageAlt": "",
+        "stack": "AI Agents • Go-to-Market",
+        "title": "GTM Agent",
+        "built": "Built Mar 2026",
+        "description": "AI agent that supports go-to-market work, helping research, plan and automate outreach for new products.",
+        "tags": [
+          "AI Agent",
+          "Go-to-Market",
+          "Automation"
+        ],
+        "links": [
+          {
+            "href": "https://github.com/soniAnkur/GTM_Agent",
+            "label": "GITHUB"
+          }
+        ]
+      },
+      {
+        "category": "ai business",
+        "badge": "Live",
+        "image": "images/paperclip-studio.jpg",
+        "imageAlt": "Screenshot of Paperclip Studio showing a team of AI agents as 3D characters at work",
+        "stack": "AI Agents • Visualization • 3D",
+        "title": "Paperclip Studio",
+        "built": "Built Oct 2026",
+        "description": "Live dashboard that turns a team of AI agents into 3D characters, showing who is working, what is up next, who is waiting and which tasks they are on.",
+        "tags": [
+          "AI Agents",
+          "Observability",
+          "3D"
+        ],
+        "links": [
+          {
+            "href": "https://paperclip-studio-drab.vercel.app",
+            "label": "LIVE DEMO"
+          },
+          {
+            "href": "https://github.com/soniAnkur/paperclip-studio",
+            "label": "GITHUB"
+          }
+        ]
+      },
+      {
+        "category": "ai business",
+        "badge": "",
+        "image": "images/jide-studio.jpg",
+        "imageAlt": "Screenshot of Jide Studio: a dashboard of real estate listing videos with a live production timeline",
+        "stack": "AI Video • Voice • Real Estate",
+        "title": "Jide Studio",
+        "built": "Built Nov 2026",
+        "description": "AI video studio for real estate agents: import a listing link and it writes the script, records the agent's voice, makes the video, runs quality checks and queues it for approval.",
+        "tags": [
+          "AI Video",
+          "Voice AI",
+          "Real Estate"
+        ],
+        "links": []
+      },
+      {
+        "category": "ecommerce ai",
+        "badge": "Live",
+        "image": "images/rhythmocean.jpg",
+        "imageAlt": "Screenshot of the Rhythm &amp; Ocean kids clothing storefront",
+        "stack": "Next.js • E-commerce • AI Try-On",
+        "title": "Rhythm & Ocean",
+        "built": "Built Feb 2026",
+        "description": "Kids clothing e-commerce platform with innovative AI-powered virtual try-on feature. Complete shopping experience with age-based filtering and newsletter integration.",
+        "tags": [
+          "Kids Fashion",
+          "AI Try-On",
+          "E-commerce"
+        ],
+        "links": [
+          {
+            "href": "https://rhythmocean.vercel.app",
+            "label": "Live demo"
+          }
+        ]
+      },
+      {
+        "category": "ai business",
+        "badge": "Live",
+        "image": "images/stocker.jpg",
+        "imageAlt": "Screenshot of STOCK'er showing an AAPL sentiment score of 87, bullish",
+        "stack": "Next.js • AI/ML • Real-time",
+        "title": "STOCK'er - Sentiment Analysis",
+        "built": "Built Aug 2025",
+        "description": "Real-time stock market sentiment tracker powered by AI. Provides insights into market perception and emotional tone with interactive dashboard.",
+        "tags": [
+          "Finance",
+          "AI Analysis",
+          "Real-time"
+        ],
+        "links": [
+          {
+            "href": "https://sentiment-app-ten.vercel.app",
+            "label": "Live demo"
+          },
+          {
+            "href": "https://github.com/soniAnkur/sentiment-app",
+            "label": "GitHub"
+          }
+        ]
+      },
+      {
+        "category": "ai business",
+        "badge": "Live",
+        "image": "",
+        "imageAlt": "",
+        "stack": "Next.js • Perplexity • Grok AI",
+        "title": "InsightCanvas",
+        "built": "Built Jul 2025",
+        "description": "AI-powered research platform combining Perplexity search with Grok AI visualizations. Comprehensive research capabilities with interactive components.",
+        "tags": [
+          "Research",
+          "Visualization",
+          "Multi-AI"
+        ],
+        "links": [
+          {
+            "href": "https://gen-ui-insights.vercel.app",
+            "label": "Live demo"
+          }
+        ]
+      }
+    ]
+  },
+  "updates": {
+    "heading": "Latest updates",
+    "intro": "Signal pulled from <a href=\"https://www.linkedin.com/in/ankursoni948/\" target=\"_blank\">LinkedIn</a> — full text lives on the original post.",
+    "items": [
+      {
+        "platform": "linkedin",
+        "icon": "simple-icons:linkedin",
+        "meta": "LinkedIn·2 days ago",
+        "text": "Running 10+ AI agents across 3 machines with zero unified visibility led me to build <strong>Orbit</strong> — one browser tab showing every live agent session, RAM usage, and a one-click kill switch across machines, persisted via tmux.",
+        "tags": [
+          "#AgenticAI",
+          "#DeveloperTools",
+          "#DevEx"
+        ],
+        "href": "https://www.linkedin.com/posts/ankursoni948_agenticai-developertools-devex-ugcPost-7521007086324019200-m8Am/"
+      },
+      {
+        "platform": "linkedin",
+        "icon": "simple-icons:linkedin",
+        "meta": "LinkedIn·2 weeks ago",
+        "text": "Built <strong>Paperclip Studio</strong> — a read-only 3D dashboard that turns a company of AI agents into a calm, glanceable scene: one character per agent, plain-English status, live activity feed. Zero dependencies, works on a phone. MIT-licensed, shipping hourly.",
+        "tags": [
+          "#AIAgents",
+          "#OpenSource",
+          "#ThreeJS",
+          "#BuildInPublic"
+        ],
+        "href": "https://www.linkedin.com/posts/ankursoni948_aiagents-opensource-threejs-share-7515885524763729920-h797/"
+      },
+      {
+        "platform": "linkedin",
+        "icon": "simple-icons:linkedin",
+        "meta": "LinkedIn·1+ year ago·Reshare",
+        "text": "Reshared a look at real-world vertical integration — AI powering daily physical products while pushing sustainability goals forward.",
+        "tags": [
+          "#Tesla",
+          "#AIInnovation",
+          "#Sustainability"
+        ],
+        "href": "https://www.linkedin.com/posts/ankursoni948_tesla-aiinnovation-sustainability-share-7379604785936842752-7SN2/"
+      },
+      {
+        "platform": "linkedin",
+        "icon": "simple-icons:linkedin",
+        "meta": "LinkedIn·1+ year ago",
+        "text": "A fun side experiment with Nano Banana AI: tried generating a consistent-character image sequence, and bananas crashed the party in 30–40% of the frames — including one car that ended up looking suspiciously like a banana.",
+        "tags": [
+          "#NanoBanana",
+          "#Google",
+          "#AI"
+        ],
+        "href": "https://www.linkedin.com/posts/ankursoni948_nanobanana-google-ai-ugcPost-7373078944302092288-0pFA/"
+      }
+    ]
+  },
+  "writing": {
+    "heading": "Writing",
+    "intro": "Two posts on giving an AI assistant real control of a real app, both built on <span>Raga Radio</span> — my mood-filtered Indian classical station.",
+    "posts": [
+      {
+        "href": "writing/mcp-apps-raga-radio.html",
+        "cover": "writing/cover-mcp-apps.svg",
+        "coverAlt": "A chat bubble containing an embedded audio player",
+        "title": "Putting a radio inside a chat",
+        "meta": "MCP Apps · 9 min",
+        "note": "An assistant can tell you Raga Multani suits the late afternoon. It cannot give you a seek bar. Shipping real UI from an MCP server with <code>ui://</code> resources — and the CSP default that silently kills audio."
+      },
+      {
+        "href": "writing/webmcp-raga-radio.html",
+        "cover": "writing/cover-webmcp.svg",
+        "coverAlt": "A browser tab exposing two named tools to an agent",
+        "title": "Driving a tab you already have open",
+        "meta": "Web MCP · 8 min",
+        "note": "The radio is already playing and you are already signed in. Letting the page publish its own tools on <code>document.modelContext</code> so any agent in the browser can drive it."
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "lead": "Let's chat about tech",
+    "body": "Always keen to discuss micro-frontends, web components, AI tooling, or whatever interesting problem you're tackling. No sales pitches, just good tech banter.",
+    "details": [
+      {
+        "label": "Location",
+        "value": "Cupertino, California (San Francisco Bay Area)"
+      },
+      {
+        "label": "Email",
+        "value": "<a href=\"mailto:ankursoni948@gmail.com\">ankursoni948@gmail.com</a>"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "<a href=\"https://www.linkedin.com/in/ankursoni948/\" target=\"_blank\" rel=\"me\">linkedin.com/in/ankursoni948</a>"
+      },
+      {
+        "label": "GitHub",
+        "value": "<a href=\"https://github.com/soniAnkur\" target=\"_blank\">github.com/soniAnkur</a>"
+      }
+    ],
+    "ctaHeading": "Fancy a chat?",
+    "topics": [
+      "Geeking out about MFEs and web components",
+      "Framework-agnostic solutions (because we're not married to React, are we?)",
+      "AI tooling and MCP integrations",
+      "Side projects and open source shenanigans",
+      "That thing you're building that keeps you up at night"
+    ],
+    "note": "Fair warning: I've got a full-time gig at Amazon, so no consulting work. But always up for interesting tech discussions and the occasional collaboration!",
+    "cta": {
+      "label": "Send message",
+      "href": "mailto:ankursoni948@gmail.com"
+    }
+  },
+  "theme": "iris-dark",
+  "footer": {
+    "tagline": "Building the future, one line of code at a time.",
+    "columns": [
+      {
+        "heading": "Quick links",
+        "links": [
+          {
+            "label": "About",
+            "href": "#about"
+          },
+          {
+            "label": "Projects",
+            "href": "#projects"
+          },
+          {
+            "label": "Updates",
+            "href": "#updates"
+          },
+          {
+            "label": "Writing",
+            "href": "#blog"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact"
+          }
+        ]
+      },
+      {
+        "heading": "Connect",
+        "links": [
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/ankursoni948/",
+            "rel": "me"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/soniAnkur"
+          },
+          {
+            "label": "Email",
+            "href": "mailto:ankursoni948@gmail.com"
+          }
+        ]
+      }
+    ],
+    "stats": [
+      "29+ Projects",
+      "15+ Live Apps",
+      "10+ Years Experience"
+    ]
+  }
+}

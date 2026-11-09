@@ -1,0 +1,33 @@
+/* warm-dark — same structure, warmer temperature. Blue-black reads gamer;
+   warm charcoal reads considered. Amber replaces iris. */
+:root {
+    --accent: #e8b14c;
+    --accent-soft: rgba(232, 177, 76, 0.14);
+    --signal: #6cc48a;
+    --highlight: #e8b14c;
+
+    --dark-bg: #141210;
+    --darker-bg: #0e0c0b;
+    --card-bg: rgba(28, 25, 23, 0.72);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(237, 232, 226, 0.11);
+
+    --text-primary: #ede8e2;
+    --text-secondary: #a8a29a;
+}
+
+.tech-bg {
+    background:
+        radial-gradient(120% 80% at 18% 0%, rgba(232, 177, 76, 0.10) 0%, transparent 58%),
+        radial-gradient(90% 70% at 92% 22%, rgba(214, 138, 90, 0.06) 0%, transparent 55%),
+        var(--dark-bg);
+}
+
+.btn-primary { color: #1b1206; }
+.project-badge { color: #1b1206; }
+
+:root {
+    --nav-bg: rgba(20, 18, 16, 0.82);
+    --nav-bg-scrolled: rgba(14, 12, 11, 0.95);
+    --footer-bg: rgba(14, 12, 11, 0.9);
+}

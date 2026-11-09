@@ -34,6 +34,13 @@
     --text-secondary: #949db1;
     --text-accent: var(--accent);
 
+    /* Header and footer surfaces. These were hardcoded dark in two places
+       (here and inline in script.js), which made every light theme
+       unreadable — the logo sat at 1.0 contrast on swiss. */
+    --nav-bg: rgba(10, 10, 15, 0.8);
+    --nav-bg-scrolled: rgba(10, 10, 15, 0.95);
+    --footer-bg: rgba(10, 10, 15, 0.9);
+
     /* Spacing */
     --section-padding: 120px;
     --container-width: 1200px;
@@ -149,8 +156,9 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 15, 0.8);
+    background: var(--nav-bg);
     backdrop-filter: blur(20px);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
     border-bottom: 1px solid var(--glass-border);
     padding: 1.5rem 0;
 }
@@ -1294,7 +1302,7 @@ section {
    =========================== */
 
 .footer {
-    background: rgba(10, 10, 15, 0.9);
+    background: var(--footer-bg);
     border-top: 1px solid var(--glass-border);
     padding: 4rem 0 2rem;
     margin-top: 4rem;
@@ -2088,3 +2096,83 @@ section {
 
     .post-cover { width: 100%; }
 }
+
+/* Skip link — was inline-styled in JS with a hardcoded colour, which broke
+   on any theme but the original. */
+.skip-link {
+    position: fixed;
+    top: -60px;
+    left: 0;
+    z-index: 10000;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: var(--dark-bg);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: top 0.15s ease;
+}
+
+.skip-link.is-visible,
+.skip-link:focus-visible { top: 0; }
+
+/* The logo became an anchor in the template; stop the default underline. */
+.nav-logo { text-decoration: none; }
+.nav-logo:hover { opacity: 0.85; }
+
+/* Scrolled state, set by a class rather than an inline style so themes win. */
+.nav.is-scrolled {
+    background: var(--nav-bg-scrolled);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* --- Theme switcher in the header --- */
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+}
+
+.theme-dot {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.theme-dot span {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(128, 128, 128, 0.45);
+    transition: width 0.15s ease, height 0.15s ease;
+}
+
+.theme-dot:hover { transform: scale(1.12); }
+
+.theme-dot.is-active span {
+    width: 17px;
+    height: 17px;
+    box-shadow: inset 0 0 0 1px rgba(128, 128, 128, 0.5), 0 0 0 2px var(--dark-bg), 0 0 0 3.5px var(--text-primary);
+}
+
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 820px) {
+    .theme-switch { gap: 0.2rem; padding: 0.25rem; }
+    .theme-dot { width: 19px; height: 19px; }
+    .theme-dot span { width: 11px; height: 11px; }
+}
+
+/* Footer headings were accent-coloured, which fails AA at 16px bold on the
+   light themes. The accent is doing nothing informative here. */
+.footer-column h4 { color: var(--text-primary); }
