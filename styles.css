@@ -2117,7 +2117,9 @@ section {
 .skip-link:focus-visible { top: 0; }
 
 /* The logo became an anchor in the template; stop the default underline. */
-.nav-logo { text-decoration: none; }
+/* The spans inside set their own colour; this stops the anchor itself
+   falling back to the UA link blue on any theme. */
+.nav-logo { text-decoration: none; color: inherit; }
 .nav-logo:hover { opacity: 0.85; }
 
 /* Scrolled state, set by a class rather than an inline style so themes win. */

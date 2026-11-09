@@ -373,4 +373,36 @@ const outArg = process.argv.find((a) => a.startsWith("--out="));
 const out = outArg ? outArg.split("=")[1] : "index.html";
 
 await writeFile(out, html);
-console.log(`built ${out} · theme "${theme}" · ${site.projects.items.length} projects, ${site.updates.items.length} updates, ${site.writing.posts.length} posts`);
+
+// The posts are hand-written rather than generated, but the default theme
+// belongs to the content layer, so the build owns their stylesheet link and
+// bootstrap too. Otherwise someone landing straight on a post gets whichever
+// theme was hardcoded there instead of the one site.json asks for.
+const bootstrap = `    <script id="themeBootstrap">window.__THEMES__ = ${JSON.stringify(
+  themes
+)}; window.__THEME__ = "${theme}";</script>`;
+
+const patched = [];
+for (const file of (await readdir("writing")).filter((f) => f.endsWith(".html"))) {
+  const path = `writing/${file}`;
+  const before = await readFile(path, "utf8");
+
+  let src = before.replace(
+    /(<link rel="stylesheet" id="themeCss" href="\.\.\/themes\/)[a-z0-9-]+(\.css">)/,
+    `$1${theme}$2`
+  );
+
+  src = /<script id="themeBootstrap">/.test(src)
+    ? src.replace(/[ \t]*<script id="themeBootstrap">[\s\S]*?<\/script>/, bootstrap)
+    : src.replace(/([ \t]*<script src="\.\.\/theme\.js"><\/script>)/, `${bootstrap}\n$1`);
+
+  if (src !== before) {
+    await writeFile(path, src);
+    patched.push(file);
+  }
+}
+
+console.log(
+  `built ${out} · theme "${theme}" · ${site.projects.items.length} projects, ${site.updates.items.length} updates, ${site.writing.posts.length} posts` +
+    (patched.length ? `\nrethemed ${patched.length} post(s): ${patched.join(", ")}` : "")
+);
