@@ -13,7 +13,9 @@
     --glass-border: #e5e5e5;
 
     --text-primary: #0a0a0a;
-    --text-secondary: #737373;
+    /* #737373 cleared AA on white but not on the 3% glass tint the project
+       cards use, where descriptions and tags landed at 4.18-4.45. */
+    --text-secondary: #6a6a6a;
 }
 
 body { background: var(--dark-bg); }
