@@ -2363,3 +2363,52 @@ section {
     .patent-title { max-width: none; }
     .patent-fact { grid-template-columns: 1fr; gap: 0.2rem; }
 }
+
+/* Patent-pending marker on the projects that practise the application.
+   Top left, clear of the teal Live badge at top right. The colours are
+   fixed rather than themed: this has to read as bright on all five
+   backgrounds, and amber on near-black text clears AA everywhere. */
+.project-patent {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 20px;
+    background: #ffb224;
+    color: #1d1403;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(3, 5, 11, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-patent::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1d1403;
+}
+
+.project-patent:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(3, 5, 11, 0.34);
+}
+
+.project-patent:focus-visible {
+    outline: 2px solid #1d1403;
+    outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+    .project-patent { top: 14px; left: 14px; font-size: 0.65rem; padding: 0.42rem 0.7rem; }
+}

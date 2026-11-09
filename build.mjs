@@ -259,6 +259,7 @@ ${map(site.about.flagship, (f) => `                        <li>
 
 const projectCard = (p) => `                <div class="project-card" data-category="${attr(p.category)}">
                     ${p.badge ? `<div class="project-badge">${esc(p.badge)}</div>` : ""}
+                    ${p.patentPending ? `<a class="project-patent" href="#patent" title="This project practises the published patent application">Patent pending</a>` : ""}
                     <div class="project-image"${p.image ? ` style="background:url('${attr(p.image)}') center/cover no-repeat" role="img" aria-label="${attr(p.imageAlt)}"` : ""}>
                         <div class="project-overlay"></div>
                         <div class="project-tech">${esc(p.stack)}</div>

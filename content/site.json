@@ -216,7 +216,8 @@
             "href": "https://github.com/soniAnkur/kids-storybooks-demo",
             "label": "GitHub"
           }
-        ]
+        ],
+        "patentPending": true
       },
       {
         "category": "ai",
@@ -241,7 +242,8 @@
             "href": "https://github.com/soniAnkur/raga-radio",
             "label": "GITHUB"
           }
-        ]
+        ],
+        "patentPending": true
       },
       {
         "category": "ai education",
@@ -266,7 +268,8 @@
             "href": "https://github.com/soniAnkur/voice-stories",
             "label": "GITHUB"
           }
-        ]
+        ],
+        "patentPending": true
       },
       {
         "category": "ai",
@@ -287,7 +290,8 @@
             "href": "https://avatarai-v2-olive.vercel.app",
             "label": "LIVE DEMO"
           }
-        ]
+        ],
+        "patentPending": true
       },
       {
         "category": "ai business",
@@ -349,7 +353,8 @@
           "Voice AI",
           "Real Estate"
         ],
-        "links": []
+        "links": [],
+        "patentPending": true
       },
       {
         "category": "ecommerce ai",
