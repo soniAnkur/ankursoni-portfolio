@@ -129,15 +129,15 @@ const nav = `
                 <span class="logo-text">${esc(site.identity.logo.text)}</span>
                 <span class="logo-bracket">/&gt;</span>
             </a>
-            <div class="nav-links">
-${map(site.nav, (n) => `                <a href="${attr(n.href)}" class="nav-link">${esc(n.label)}</a>`)}
-            </div>
-            <div class="nav-actions">
+            <div class="nav-menu" id="navMenu">
+                <div class="nav-links">
+${map(site.nav, (n) => `                    <a href="${attr(n.href)}" class="nav-link">${esc(n.label)}</a>`)}
+                </div>
                 <div class="theme-switch" role="group" aria-label="Colour theme">
 ${themes.map((t) => `                    <button type="button" class="theme-dot" data-theme-name="${attr(t)}" title="${attr(THEME_LABELS[t] || t)}" aria-label="${attr(THEME_LABELS[t] || t)}"><span style="background:${THEME_SWATCH[t] || "#888"}"></span></button>`).join("\n")}
                 </div>
-                <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navMenu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </nav>`;
 

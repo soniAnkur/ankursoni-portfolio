@@ -190,9 +190,21 @@ body {
     color: var(--text-primary);
 }
 
+/* Links and the theme switcher share one wrapper so the hamburger has a
+   single thing to open on mobile. On desktop the wrapper takes the space
+   the old space-between gave it: auto margins centre the links between the
+   logo and the switcher, which sits at the right edge. */
+.nav-menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
 .nav-links {
     display: flex;
     gap: 3rem;
+    margin: 0 auto;
 }
 
 .nav-link {
@@ -278,30 +290,53 @@ body {
     transform: rotate(0deg) scale(1);
 }
 
+/* A button needs its chrome reset explicitly, or the UA draws a bordered
+   grey box around the bars. 44px square keeps it a comfortable tap target
+   while the bars stay visually small. */
 .nav-toggle {
     display: none;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: none;
+    color: inherit;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.2s ease;
+}
+
+/* Guarded, or the background sticks after a tap on a touch screen. */
+@media (hover: hover) {
+    .nav-toggle:hover { background: var(--glass-bg); }
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 .nav-toggle span {
-    width: 25px;
+    width: 22px;
     height: 2px;
-    background: var(--neon-cyan);
-    transition: all 0.3s ease;
+    border-radius: 2px;
+    background: var(--text-primary);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease;
 }
 
-.nav-toggle.active span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
+/* The bars sit 8px apart centre to centre, so that is the travel to the middle. */
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-.nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle.active span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+@media (prefers-reduced-motion: reduce) {
+    .nav-toggle span { transition: none; }
 }
 
 /* ===========================
@@ -1433,27 +1468,56 @@ section {
         --section-padding: 80px;
     }
 
-    .nav-links {
+    /* The whole menu drops down, theme switcher included, so nothing has to
+       share the bar with the logo. The background is a token, not a dark
+       literal, or the panel stays near-black on the light themes. */
+    .nav-menu {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
+        flex: none;
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
-        padding: 1.5rem 0 2rem;
-        background: rgba(10, 10, 15, 0.98);
-        backdrop-filter: blur(20px);
+        padding: 1.75rem 1.5rem 2rem;
+        /* Solid, not the translucent nav token: the portrait and the status
+           pill showed through an open menu. --dark-bg is each theme's opaque
+           page colour. */
+        background: var(--dark-bg);
         border-bottom: 1px solid var(--glass-border);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
     }
 
-    .nav-links.active {
+    .nav-menu.is-open {
         display: flex;
     }
 
-    .nav-actions {
-        gap: 1rem;
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 0;
+    }
+
+    /* In the panel the pill becomes a plain row under a divider rule, and
+       the dots grow to a comfortable tap target. */
+    .nav-menu .theme-switch {
+        width: 100%;
+        margin: 0;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 1.5rem 0 0;
+        border: 0;
+        border-top: 1px solid var(--glass-border);
+        border-radius: 0;
+    }
+
+    .nav-menu .theme-dot {
+        width: 40px;
+        height: 40px;
     }
 
     .theme-toggle {

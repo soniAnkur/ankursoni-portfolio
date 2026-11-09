@@ -29,7 +29,10 @@ function initCopyrightYear() {
 // ===========================
 function initNavigation() {
     const nav = document.querySelector('.nav');
-    const navToggle = document.getElementById('navToggle');
+    // Query by class, not id: the markup is generated and an id is easy to
+    // drop there, which silently disabled the menu once already.
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
     // Scroll effect
@@ -37,11 +40,36 @@ function initNavigation() {
         nav.classList.toggle('is-scrolled', window.scrollY > 100);
     });
 
-    // Mobile menu toggle
-    if (navToggle) {
+    // Mobile menu
+    const setMenu = (open) => {
+        if (!navToggle || !navMenu) return;
+        navMenu.classList.toggle('is-open', open);
+        navToggle.classList.toggle('is-open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            document.querySelector('.nav-links').classList.toggle('active');
+            setMenu(!navMenu.classList.contains('is-open'));
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
+                setMenu(false);
+                navToggle.focus();
+            }
+        });
+
+        // Tapping outside the panel closes it.
+        document.addEventListener('click', (e) => {
+            if (!navMenu.classList.contains('is-open')) return;
+            if (!nav.contains(e.target)) setMenu(false);
+        });
+
+        // Going back to desktop must not leave the panel latched open.
+        window.matchMedia('(min-width: 769px)').addEventListener('change', (e) => {
+            if (e.matches) setMenu(false);
         });
     }
 
@@ -60,10 +88,7 @@ function initNavigation() {
             }
 
             // Close mobile menu after navigating
-            if (navToggle) {
-                navToggle.classList.remove('active');
-                document.querySelector('.nav-links').classList.remove('active');
-            }
+            setMenu(false);
         });
     });
 
