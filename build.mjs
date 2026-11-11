@@ -198,14 +198,19 @@ ${map(site.hero.social, (s) => `                    <a href="${attr(s.href)}" ta
         </div>
     </section>`;
 
-// Feed timestamps are derived from the post date at build time. They used to
-// be written by hand in the content and went stale: a two-week-old post still
+// Feed timestamps come from the post's exact publish instant. They used to be
+// written by hand in the content and went stale: a two-week-old post still
 // claimed "2 days ago", which is a bad look on a page about recent work.
 const PLATFORM = { linkedin: "LinkedIn", github: "GitHub", x: "X" };
 
-// Dates are exact UTC instants, so the label is right whatever timezone the
-// build runs in. Buckets are deliberately coarse ("today", not "9 hours ago")
-// so a label stays true for a while after the deploy that generated it.
+// This runs twice: here, to render a correct label into the HTML for crawlers
+// and for anyone with JavaScript off, and again in the browser on every page
+// load. The browser copy is emitted from this very function (see agoScript
+// below), so the two can never drift apart. Without the browser pass the label
+// would freeze at whatever the last deploy produced.
+//
+// Buckets are coarse ("today", not "9 hours ago") so the rendered text stays
+// true for a while rather than being wrong within the hour.
 const ago = (iso) => {
   const hours = Math.max(0, (Date.now() - Date.parse(iso)) / 3600000);
   if (hours < 24) return "today";
@@ -224,10 +229,38 @@ const ago = (iso) => {
   return years === 1 ? "1 year ago" : `${years} years ago`;
 };
 
+// <time> wraps the timestamp alone, so the browser pass can replace just that
+// node and leave the platform name and the Reshare marker untouched.
 const feedMeta = (u) =>
-  [PLATFORM[u.platform] || u.platform, ago(u.date), u.reshare ? "Reshare" : null]
+  [
+    esc(PLATFORM[u.platform] || u.platform),
+    `<time datetime="${attr(u.date)}" data-ago>${esc(ago(u.date))}</time>`,
+    u.reshare ? "Reshare" : null,
+  ]
     .filter(Boolean)
-    .join("·");
+    .join("<span>·</span>");
+
+// The client copy is generated from the function above rather than written out
+// a second time, so there is exactly one definition of what "2 weeks ago" means.
+const agoScript = `    <script>
+    (function () {
+        var ago = ${ago.toString()};
+        var paint = function () {
+            var nodes = document.querySelectorAll("time[data-ago]");
+            for (var i = 0; i < nodes.length; i++) {
+                var iso = nodes[i].getAttribute("datetime");
+                if (!iso) continue;
+                var text = ago(iso);
+                if (nodes[i].textContent !== text) nodes[i].textContent = text;
+            }
+        };
+        paint();
+        // A tab left open overnight should not still read "today".
+        document.addEventListener("visibilitychange", function () {
+            if (!document.hidden) paint();
+        });
+    })();
+    </script>`;
 
 const sectionHead = (heading) => `            <div class="section-header">
                 <h2 class="section-title">${esc(heading)}</h2>
@@ -330,7 +363,7 @@ ${sectionHead(site.updates.heading)}
 ${map(site.updates.items, (u) => `                <li class="feed-item">
                     <iconify-icon class="feed-mark" icon="${attr(u.icon || "simple-icons:linkedin")}" aria-label="LinkedIn"></iconify-icon>
                     <div class="feed-body">
-                        <p class="feed-meta"><time datetime="${attr(u.date)}">${esc(feedMeta(u)).replace(/·/g, "<span>·</span>")}</time></p>
+                        <p class="feed-meta">${feedMeta(u)}</p>
                         <div class="feed-text">${rich(u.text)}</div>
                         <button class="feed-more" type="button" aria-expanded="false">See more</button>
                         ${u.tags.length ? `<p class="feed-tags">${u.tags.map((t) => `<span>${esc(t)}</span>`).join(" ")}</p>` : ""}
@@ -422,6 +455,8 @@ ${site.footer.stats.map((t) => `                    <span>${esc(t)}</span>`).joi
             </div>
         </div>
     </footer>
+
+${agoScript}
 
     <script>window.__THEMES__ = ${JSON.stringify(themes)}; window.__THEME__ = "${theme}";</script>
     <script src="theme.js"></script>
