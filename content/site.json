@@ -432,19 +432,34 @@
       {
         "platform": "linkedin",
         "icon": "simple-icons:linkedin",
-        "meta": "LinkedIn·2 days ago",
+        "date": "2026-11-10T20:31:07Z",
+        "text": "Two thousand years ago the Natya Shastra wrote down a bold idea: music can be built to move the mind, and by the 13th century the Sangita Ratnakara was noting the time of day for each raga. The hard part was never generating music — it was keeping the model inside the raga, because left alone it drifts toward familiar scales. So I built a <strong>rulebook for 68 ragas</strong>: allowed notes, ascent, descent. A guide melody is composed strictly from those rules, Suno performs over it instead of inventing a tune, and a listen-back check counts every held note that falls outside the raga. This track came in at <strong>1.4% and 2.7% wrong notes</strong> across two versions. Suno is the performer; the raga stays in charge.",
+        "tags": [
+          "#IndianClassicalMusic",
+          "#Raga",
+          "#Suno",
+          "#SunoAI",
+          "#AIMusic",
+          "#ClaudeCode",
+          "#MCP"
+        ],
+        "href": "https://www.linkedin.com/posts/ankursoni948_indianclassicalmusic-raga-suno-activity-7526018627624402944-nVRF"
+      },
+      {
+        "platform": "linkedin",
+        "icon": "simple-icons:linkedin",
         "text": "Running 10+ AI agents across 3 machines with zero unified visibility led me to build <strong>Orbit</strong> — one browser tab showing every live agent session, RAM usage, and a one-click kill switch across machines, persisted via tmux.",
         "tags": [
           "#AgenticAI",
           "#DeveloperTools",
           "#DevEx"
         ],
-        "href": "https://www.linkedin.com/posts/ankursoni948_agenticai-developertools-devex-ugcPost-7521007086324019200-m8Am/"
+        "href": "https://www.linkedin.com/posts/ankursoni948_agenticai-developertools-devex-ugcPost-7521007086324019200-m8Am/",
+        "date": "2026-10-28T00:37:03Z"
       },
       {
         "platform": "linkedin",
         "icon": "simple-icons:linkedin",
-        "meta": "LinkedIn·2 weeks ago",
         "text": "Built <strong>Paperclip Studio</strong> — a read-only 3D dashboard that turns a company of AI agents into a calm, glanceable scene: one character per agent, plain-English status, live activity feed. Zero dependencies, works on a phone. MIT-licensed, shipping hourly.",
         "tags": [
           "#AIAgents",
@@ -452,31 +467,33 @@
           "#ThreeJS",
           "#BuildInPublic"
         ],
-        "href": "https://www.linkedin.com/posts/ankursoni948_aiagents-opensource-threejs-share-7515885524763729920-h797/"
+        "href": "https://www.linkedin.com/posts/ankursoni948_aiagents-opensource-threejs-share-7515885524763729920-h797/",
+        "date": "2026-10-13T21:25:47Z"
       },
       {
         "platform": "linkedin",
         "icon": "simple-icons:linkedin",
-        "meta": "LinkedIn·1+ year ago·Reshare",
         "text": "Reshared a look at real-world vertical integration — AI powering daily physical products while pushing sustainability goals forward.",
         "tags": [
           "#Tesla",
           "#AIInnovation",
           "#Sustainability"
         ],
-        "href": "https://www.linkedin.com/posts/ankursoni948_tesla-aiinnovation-sustainability-share-7379604785936842752-7SN2/"
+        "href": "https://www.linkedin.com/posts/ankursoni948_tesla-aiinnovation-sustainability-share-7379604785936842752-7SN2/",
+        "date": "2025-10-02T19:54:47Z",
+        "reshare": true
       },
       {
         "platform": "linkedin",
         "icon": "simple-icons:linkedin",
-        "meta": "LinkedIn·1+ year ago",
         "text": "A fun side experiment with Nano Banana AI: tried generating a consistent-character image sequence, and bananas crashed the party in 30–40% of the frames — including one car that ended up looking suspiciously like a banana.",
         "tags": [
           "#NanoBanana",
           "#Google",
           "#AI"
         ],
-        "href": "https://www.linkedin.com/posts/ankursoni948_nanobanana-google-ai-ugcPost-7373078944302092288-0pFA/"
+        "href": "https://www.linkedin.com/posts/ankursoni948_nanobanana-google-ai-ugcPost-7373078944302092288-0pFA/",
+        "date": "2025-09-14T19:43:25Z"
       }
     ]
   },
